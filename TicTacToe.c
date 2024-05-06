@@ -7,7 +7,7 @@ int board[10] = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2};
 int turn = 1, flag = 0;
 int player, comp;
 
-void menu();
+void menu(); //this is euna branch
 void go(int n);
 void start_game();
 void check_draw();
@@ -15,7 +15,7 @@ void draw_board();
 void player_first();
 void put_X_O(char ch, int pos);
 COORD coord = {0, 0}; // this is global variable
-                      // center of axis is set to the top left cornor of the screen
+                   ㅣㄴ   // center of axis is set to the top left cornor of the screen
 void gotoxy(int x, int y)
 {
   coord.X = x;
