@@ -231,7 +231,7 @@ void check_draw()
   }
 }
 
-void draw_board()  // draw board
+void draw_board()  // This is draw board
 {
   int j;
 
