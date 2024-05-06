@@ -8,6 +8,8 @@ int turn = 1, flag = 0;
 int player, comp;
 
 void menu(); //this is euna branch
+//this is euna branch
+//this is euna branch
 void go(int n);
 void start_game();
 void check_draw();
