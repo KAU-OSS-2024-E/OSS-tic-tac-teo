@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
-#include <windows.h>
+#include <windows.h> //window lib depenency 
 
 int board[10] = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2};
 int turn = 1, flag = 0;
