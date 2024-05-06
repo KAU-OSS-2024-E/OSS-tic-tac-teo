@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
-#include <windows.h>
+#include <windows.h> //window lib depenency 
 
 int board[10] = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2};
 int turn = 1, flag = 0;
@@ -23,7 +23,7 @@ void gotoxy(int x, int y)
   SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
-int main()
+int main() //main function
 {
   printf("hi");
   system("cls");
