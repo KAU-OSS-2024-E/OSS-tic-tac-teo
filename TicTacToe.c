@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <windows.h> //window lib depenency 
 
-int board[10] = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2};
+int board[10] = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2}; //test1
 int turn = 1, flag = 0;
 int player, comp;
 
