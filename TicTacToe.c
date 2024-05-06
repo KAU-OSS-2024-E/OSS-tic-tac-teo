@@ -7,7 +7,7 @@ int board[10] = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2}; //test1
 int turn = 1, flag = 0;
 int player, comp;
 
-void menu(); //menu
+void menu(); //menu //준영_commit 연습
 void go(int n);
 void start_game();
 void check_draw();
