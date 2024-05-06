@@ -23,7 +23,7 @@ void gotoxy(int x, int y)
   SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
-int main()
+int main() //main function
 {
   printf("hi");
   system("cls");
