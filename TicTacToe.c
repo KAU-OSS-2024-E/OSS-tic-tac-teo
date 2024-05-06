@@ -7,7 +7,7 @@ int board[10] = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2};
 int turn = 1, flag = 0;
 int player, comp;
 
-void menu();
+void menu(); //menu
 void go(int n);
 void start_game();
 void check_draw();
