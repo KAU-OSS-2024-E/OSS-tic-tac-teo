@@ -33,7 +33,7 @@ int main() //main function
   return 0;
 }
 
-void menu()
+void menu()  // menu function
 {
   int choice;
   system("cls");
@@ -231,7 +231,7 @@ void check_draw()
   }
 }
 
-void draw_board()
+void draw_board()  // This is draw board
 {
   int j;
 
