@@ -33,7 +33,7 @@ int main()
   return 0;
 }
 
-void menu()
+void menu()  // menu function
 {
   int choice;
   system("cls");
