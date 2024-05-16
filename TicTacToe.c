@@ -5,10 +5,12 @@
 #include "game_rules.h"
 
 
+int board[10] = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2}; //test1
 int turn = 1, flag = 0;
 int player, comp;
-int board[10] = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2};
-void menu();
+
+void menu(); //menu //준영_commit 연습
+
 void go(int n);
 void start_game();
 void check_draw();
@@ -35,7 +37,7 @@ int main() //main function
   return 0;
 }
 
-void menu()
+void menu()  // menu function
 {
   int choice;
   system("cls");
@@ -172,7 +174,7 @@ void check_draw()
   }
 }
 
-void draw_board()
+void draw_board()  // This is draw board
 {
   int j;
 
