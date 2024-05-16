@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "game_rules.h"
 
 int posswin(int p, int *board) // starting of function to check whether you put value at an empty space
 {

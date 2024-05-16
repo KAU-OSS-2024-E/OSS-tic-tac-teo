@@ -93,6 +93,8 @@ int make4()
   return 0;
 }
 
+
+
 void go(int n)
 {
   if (turn % 2)
