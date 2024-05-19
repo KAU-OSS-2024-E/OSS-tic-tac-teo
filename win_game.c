@@ -5,7 +5,7 @@ int posswin(int p, int *board) // starting of function to check whether you put 
 {
   // p==1 then X   p==0  then  O
   int i;
-  int check_val, pos;
+  int check_val;
 
   if (p == 1)
     check_val = 18;
