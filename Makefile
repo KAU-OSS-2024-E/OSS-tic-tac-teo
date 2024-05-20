@@ -10,7 +10,7 @@ CFLAGS = -Wall -Wextra -Werror
 TARGET = TicTacToe
 
 # Source files
-SRCS = TicTacToe.c win_game.c
+SRCS = src/main.c src/main_menu.c src/game_logic.c src/move_cursor.c src/win_game.c src/game_rules.c
 
 # Object files
 OBJS = $(SRCS:.c=.o)
