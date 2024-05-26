@@ -1,10 +1,111 @@
-# TicTacToe
-Tic Tac Toe Game in C Programming Language by using basics of windows programming and functions
+# TicTacToe Game 🎮
 
-Important predefined function used in code:-
+Welcome to the TicTacToe game project! 
 
+---
 
-gotoxy in C: gotoxy function places cursor at a desired location on screen i.e., we can change cursor position using gotoxy function.
+## 📂 Project Structure
 
+```markdown
+TicTacToe/
+├── .github/
+│   └── workflows/
+│       └── cr.yml
+├── headers/
+│   ├── game_logic.h
+│   ├── game_rules.h
+│   ├── main_menu.h
+│   └── move_cursor.h
+├── src/
+│   ├── game_logic.c
+│   ├── game_rules.c
+│   ├── main.c
+│   ├── main_menu.c
+│   └── move_cursor.c
+├── .gitignore
+├── DEVELOPE.md
+├── LICENSE.md
+├── Makefile
+└── README.md
+```
 
-GetStdHandle:Retrieves a handle for the standard input, standard output, or standard error device and included in windows.h header file.
+## 🛠️ Installation
+
+Clone the repository and ensure you have `gcc` installed.
+
+```bash
+git clone https://github.com/username/TicTacToe.git
+cd TicTacToe
+```
+
+## 🚀 Usage
+
+### Compiling the Game
+
+You can compile the game using `gcc` or `make`.
+
+#### Using gcc
+
+To compile the game manually, run:
+
+```bash
+gcc -Iheaders src/*.c -o TicTacToe
+```
+
+This command compiles all source files and generates an executable named `TicTacToe`.
+
+#### Using Makefile
+
+Alternatively, you can use the provided Makefile for compilation:
+
+```bash
+make
+```
+
+This will compile the source files and create the `TicTacToe` executable.
+
+### Running the Game
+
+Once compiled, you can run the game with:
+
+- On macOS and Linux:
+
+  ```bash
+  ./TicTacToe
+  ```
+
+- On Windows:
+
+  ```bash
+  TicTacToe.exe
+  ```
+
+## 👥 Team Members
+
+- **Euna**
+- **Chaeyoung** 
+- **Seungwoo** 
+- **Junyoung**
+- **Jungwoo** 
+- **Juhyun** 
+
+## 🤝 Contributing
+
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature-branch
+   ```
+3. Make your changes and commit them:
+   ```bash
+   git commit -m "Add new feature"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature-branch
+   ```
+5. Open a pull request and describe your changes.
+
+## 📜 License
+
+This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
