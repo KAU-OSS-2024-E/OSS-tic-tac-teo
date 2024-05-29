@@ -21,7 +21,7 @@ void player_move() {
         next_turn(pos);
         draw_board();
         move_cursor(30, 20);
-        printf("Player Wins");
+        printf("Player possibles");
         getch();
         exit(0);
     }
@@ -32,15 +32,15 @@ void player_move() {
 }
 
 void start_game() {
-    int com_win_position = find_possible_position(comp, board);
-    int player_win_position = find_possible_position(player, board);
+    int com_possible_position = find_possible_position(comp, board);
+    int player_possible_position = find_possible_position(player, board);
     int best_move = find_best_move();
 
-    if (com_win_position) {
-        next_turn(com_win_position);
+    if (com_possible_position) {
+        next_turn(com_possible_position);
         flag = 1;
-    } else if (player_win_position)
-        next_turn(player_win_position);
+    } else if (player_possible_position)
+        next_turn(player_possible_position);
     else if (best_move)
         next_turn(best_move);
     else
