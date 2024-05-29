@@ -1,6 +1,6 @@
 #include "game_rules.h"
 
-int find_possible_position(int p, int *board) // starting of function to check whether you put value at an empty space
+int find_win_position(int p, int *board) // starting of function to check whether you put value at an empty space
 {
   // p==1 then X   p==0  then  O
   int i;
