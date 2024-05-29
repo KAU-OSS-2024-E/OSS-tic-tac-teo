@@ -6,11 +6,10 @@
 #include "move_cursor.h"
 #include "game_rules.h"
 
-void player_move() {
+void player_move() {//multiplay
     int pos;
     check_draw(); // 무승부 확인
-    draw_board(); // 게임 보드 그리기
-    move_cursor(30, 18);
+    draw_board();
     printf("Your Turn :> ");
     scanf("%d", &pos);
 
@@ -20,21 +19,24 @@ void player_move() {
     if (pos == find_win_position(player, board)) { // 플레이어가 이길 수 있는 위치인지 확인
         next_turn(pos);
         draw_board();
-        move_cursor(30, 20);
         printf("Player wins");
         getch();
         exit(0);
     }
+    else {
+        next_turn(pos);
+        start_game(); // 컴퓨터의 턴으로 전환
+    }
 
-    next_turn(pos);
-    draw_board();
-    start_game(); // 컴퓨터의 턴으로 전환
+    
 }
 
 void start_game() {
     int com_win_position = find_win_position(comp, board);
     int player_win_position = find_win_position(player, board);
     int best_move = find_best_move();
+
+    draw_board();
 
     if (com_win_position) {
         next_turn(com_win_position);
@@ -46,10 +48,10 @@ void start_game() {
     else
         next_turn(find_next_best_move());
     
-    draw_board();
+
 
     if (flag) {
-        move_cursor(30, 20);
+        draw_board();
         printf("Computer wins");
         getch();
     } else
@@ -58,7 +60,7 @@ void start_game() {
 
 void check_draw() {
     if (turn > 9) {
-        move_cursor(30, 20);
+        draw_board();
         printf("Game Draw");
         getch();
         exit(0);
@@ -66,58 +68,36 @@ void check_draw() {
 }
 
 void draw_board() {
-    int j;
-    for (j = 9; j < 17; j++) {
-        move_cursor(35, j);
-        printf("|       |");
-    }
-    move_cursor(28, 11);
-    printf("-----------------------");
-    move_cursor(28, 14);
-    printf("-----------------------");
-
-    for (j = 1; j < 10; j++) {
-        if (board[j] == 3)
-            place_marker('X', j);
-        else if (board[j] == 5)
-            place_marker('O', j);
-    }
-}
-
-void place_marker(char marker, int position) {
-    int m;
-    int x = 31, y = 10;
-
-    m = position;
-    if (m > 3) {
-        while (m > 3) {
-            y += 3;
-            m -= 3;
+    // int j = 0; 
+    system("cls");
+    
+    for(int j = 1 ; j < 10 ; j++){
+        if (board[j] == 3){
+            printf("| X ");
+        }
+        else if (board[j] == 5){
+            printf("| O ");             
+        }
+        else {
+            printf("|   ");
+        }
+        if(j%3 == 0 ){
+            printf("|\n");
         }
     }
-    if (position % 3 == 0)
-        x += 16;
-    else {
-        position %= 3;
-        position--;
-        while (position) {
-            x += 8;
-            position--;
-        }
-    }
-    move_cursor(x, y);
-    printf("%c", marker);
+    
 }
 
-void next_turn(int position) {
+void next_turn(int position) {//update board
     if (turn % 2)
         board[position] = 3;
     else
         board[position] = 5;
+    
     turn++;
 }
 
-int find_best_move() {
+int find_best_move() { //use case 
     if (board[5] == 2)
         return 5;
     if (board[2] == 2)
@@ -131,7 +111,7 @@ int find_best_move() {
     return 0;
 }
 
-int find_next_best_move() {
+int find_next_best_move() {//use switch case
     if (board[1] == 2)
         return 1;
     if (board[3] == 2)
