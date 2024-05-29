@@ -17,7 +17,7 @@ void player_move() {
     if (board[pos] != 2)
         player_move(); // 유효하지 않은 위치면 다시 입력
 
-    if (pos == posswin(player, board)) { // 플레이어가 이길 수 있는 위치인지 확인
+    if (pos == find_win_position(player, board)) { // 플레이어가 이길 수 있는 위치인지 확인
         next_turn(pos);
         draw_board();
         move_cursor(30, 20);
@@ -32,15 +32,20 @@ void player_move() {
 }
 
 void start_game() {
-    if (posswin(comp, board)) {
-        next_turn(posswin(comp, board));
+    int com_win_position = find_win_position(comp, board);
+    int player_win_position = find_win_position(player, board);
+    int best_move = find_best_move();
+
+    if (com_win_position) {
+        next_turn(com_win_position);
         flag = 1;
-    } else if (posswin(player, board))
-        next_turn(posswin(player, board));
-    else if (find_best_move())
-        next_turn(find_best_move());
+    } else if (player_win_position)
+        next_turn(player_win_position);
+    else if (best_move)
+        next_turn(best_move);
     else
         next_turn(find_next_best_move());
+    
     draw_board();
 
     if (flag) {
