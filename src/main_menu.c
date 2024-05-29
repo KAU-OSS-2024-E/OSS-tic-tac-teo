@@ -7,7 +7,7 @@
 void main_menu()  // main_menu함수를 새로 만들었음
 {               //사용자가 첫 화면에 보았을 때 어떤 게임인지 알기 쉽고 컴튜터랑 게임을 할지 아니면 멀티플레이 게임을 할지 
                 //기능을 선택할 수 있게 해줌
-                //case 1에 있는 computer함수는
+                //case 1에 있는 play_with_com함수를 실행
                 //case 2에 있는 멀티 플레이 함수 기능은 따로 만들어야 함
     int choice;
     system("cls");
@@ -21,7 +21,7 @@ void main_menu()  // main_menu함수를 새로 만들었음
 
     switch (choice) {
         case 1:
-            computer();
+            play_with_com();
             break;
         case 2:
            //multiplay();
@@ -34,7 +34,7 @@ void main_menu()  // main_menu함수를 새로 만들었음
     }
 }
 
-void computer() { //컴퓨터랑 게임 
+void play_with_com() { //컴퓨터랑 게임 
     int choice;
     system("cls");
     printf("\n--------loading--------");
@@ -57,7 +57,8 @@ void computer() { //컴퓨터랑 게임
             break;
         case 3:
             exit(1);
+            
         default:
-            computer();
+            play_with_com();
     }
 }
