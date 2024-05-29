@@ -1,7 +1,7 @@
 ---
-name: "[Add Feature] 기능 추가 이슈 템플릿"
+name: "[Add feature] 기능 추가 이슈 템플릿"
 about: 해당 템플릿을 사용하여 기능 추가 이슈를 생성해주세요.
-title: ''
+title: "[Add feature] 제목 작성"
 labels: AddFeature
 assignees: ''
 

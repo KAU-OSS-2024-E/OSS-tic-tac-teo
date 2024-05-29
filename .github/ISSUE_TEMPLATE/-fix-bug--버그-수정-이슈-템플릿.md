@@ -1,7 +1,7 @@
 ---
 name: "[Fix Bug] 버그 수정 이슈 템플릿"
 about: 해당 템플릿을 사용하여 버그 수정 이슈를 생성해주세요.
-title: ''
+title: "[Fix Bug] 제목 작성"
 labels: FixBug
 assignees: ''
 
