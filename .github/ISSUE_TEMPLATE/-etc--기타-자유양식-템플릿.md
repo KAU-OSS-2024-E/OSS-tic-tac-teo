@@ -1,7 +1,7 @@
 ---
 name: "[ETC] 기타 자유양식 템플릿"
 about: 해당 템플릿을 사용하여 기타 이슈를 생성해주세요.
-title: "[Clean Code / Documentation / DivisionCompile] 제목 작성"
+title: "[Clean Code / Docs / DivisionCompile] 제목 작성"
 labels: ''
 assignees: ''
 
