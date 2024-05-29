@@ -48,12 +48,12 @@ void computer() { //컴퓨터랑 게임
         case 1:
             player = 1;
             comp = 0;
-            player_move(); //single play
+            player_move(); 
             break;
         case 2:
             player = 0;
             comp = 1;
-            start_game(); //multi play
+            start_game(); 
             break;
         case 3:
             exit(1);
