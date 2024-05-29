@@ -21,7 +21,7 @@ void player_move() {
         next_turn(pos);
         draw_board();
         move_cursor(30, 20);
-        printf("Player Wins");
+        printf("Player wins");
         getch();
         exit(0);
     }
