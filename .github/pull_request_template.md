@@ -8,5 +8,5 @@
 
 <!-- 참고 (확인 후 삭제해주세요!) 
 PR 제목 : 라벨명/작업제목#이슈번호
-ex) Doce/UpdateREADME#14
+ex) Docs/UpdateREADME#14
 ex) AddFeature/Addspeed#14 -->
