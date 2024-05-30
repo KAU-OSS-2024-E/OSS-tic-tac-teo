@@ -1,9 +1,9 @@
 #include "game_rules.h"
 
-int find_win_position(int p, int *board) // starting of function to check whether you put value at an empty space
+int find_win_position(int p, int board[3][3]) // starting of function to check whether you put value at an empty space
 {
   // p==1 then X   p==0  then  O
-  int i;
+  int i, j;
   int check_val;
 
   if (p == 1)
@@ -11,54 +11,41 @@ int find_win_position(int p, int *board) // starting of function to check whethe
   else
     check_val = 50;
 
-  i = 1;
-  while (i <= 9) // row check
-  {
-    if (board[i] * board[i + 1] * board[i + 2] == check_val)
-    {
-      if (board[i] == 2)
-        return i;
-      if (board[i + 1] == 2)
-        return i + 1;
-      if (board[i + 2] == 2)
-        return i + 2;
-    }
-    i += 3;
+  // row check
+  for (i = 0; i < 3; i++) {
+      if (board[i][0] * board[i][1] * board[i][2] == check_val) {
+          for (j = 0; j < 3; j++) {
+              if (board[i][j] == 2)
+                  return i * 3 + j + 1;
+          }
+      }
   }
 
-  i = 1;
-  while (i <= 3) // column check
-  {
-    if (board[i] * board[i + 3] * board[i + 6] == check_val)
-    {
-      if (board[i] == 2)
-        return i;
-      if (board[i + 3] == 2)
-        return i + 3;
-      if (board[i + 6] == 2)
-        return i + 6;
-    }
-    i++;
+  // column check
+  for (j = 0; j < 3; j++) {
+      if (board[0][j] * board[1][j] * board[2][j] == check_val) {
+          for (i = 0; i < 3; i++) {
+              if (board[i][j] == 2)
+                  return i * 3 + j + 1;
+          }
+      }
   }
 
-  if (board[1] * board[5] * board[9] == check_val)
-  {
-    if (board[1] == 2)
-      return 1;
-    if (board[5] == 2)
-      return 5;
-    if (board[9] == 2)
-      return 9;
+// diagonal check
+  if (board[0][0] * board[1][1] * board[2][2] == check_val) {
+      for (i = 0; i < 3; i++) {
+          if (board[i][i] == 2)
+              return i * 3 + i + 1;
+      }
   }
 
-  if (board[3] * board[5] * board[7] == check_val)
-  {
-    if (board[3] == 2)
-      return 3;
-    if (board[5] == 2)
-      return 5;
-    if (board[7] == 2)
-      return 7;
+  if (board[0][2] * board[1][1] * board[2][0] == check_val) {
+      for (i = 0; i < 3; i++) {
+          if (board[i][2 - i] == 2)
+              return i * 3 + 2 - i + 1;
+      }
   }
+
+
   return 0;
 }
