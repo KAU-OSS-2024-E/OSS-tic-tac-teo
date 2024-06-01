@@ -70,16 +70,29 @@ void check_draw() {
 }
 
 void draw_board() {
-    int i, j;
-    for (i = 0; i < 3; i++) {
-        for (j = 0; j < 3; j++) {
-            move_cursor(35 + j * 8, 9 + i * 3);
-            printf("|   %c   |", (board[i][j] == 3) ? 'X' : ((board[i][j] == 5) ? 'O' : ' '));
+    system("cls"); // 화면을 클리어
+
+    // 각 셀의 내용을 출력합니다.
+    for (int i = 0; i < 3; i++) {
+        // 가로 줄을 출력합니다.
+        for (int j = 0; j < 3; j++) {
+            if (j != 0)
+                printf("|");
+            if (board[i][j] == 3)
+                printf(" X ");
+            else if (board[i][j] == 5)
+                printf(" O ");
+            else
+                printf("   ");
         }
-        move_cursor(28, 11 + i * 3);
-        printf("-----------------------");
+        printf("\n");
+
+        // 가로 줄이 있는 경우에만 구분선을 출력합니다.
+        if (i != 2)
+            printf("-----------\n");
     }
 }
+
 
 void place_marker(char marker, int row, int col) {
     int x = 31 + col * 8;
