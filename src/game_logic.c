@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
+#include <time.h>
 
 #include "game_logic.h"
 #include "move_cursor.h"
@@ -8,8 +9,8 @@
 
 void player_move() {
     int pos;
-    check_draw(); // 무승부 확인
-    draw_board(); // 게임 보드 그리기
+    check_draw(); 
+    draw_board(); 
     move_cursor(30, 18);
     printf("Your Turn :> ");
     scanf("%d", &pos);
@@ -28,7 +29,11 @@ void player_move() {
 
     next_turn(pos);
     draw_board();
-    start_game(); // 컴퓨터의 턴으로 전환
+    if (mode==1) {
+        check_draw();
+        start_easy(); // 쉬운 모드 컴퓨터의 턴으로 전환
+    } else if (mode==2)
+        start_game(); // 컴퓨터의 턴으로 전환 
 }
 
 void start_game() {
@@ -53,10 +58,33 @@ void start_game() {
         printf("Computer wins");
         getch();
     } else
+
         player_move();
 }
 
-void check_draw() {
+void start_easy() {
+    int com_random_position;
+    
+    do{
+        com_random_position = rand()%9+1;
+    } while(board[com_random_position]!=2);
+
+    if (com_random_position == find_win_position(comp, board)) { 
+        next_turn(com_random_position);
+        draw_board();
+        move_cursor(30, 20);
+        printf("Computer wins");
+        getch();
+        exit(0);
+    }
+    next_turn(com_random_position);
+    draw_board();
+    
+    check_draw(); 
+    player_move();
+}
+
+void check_draw() { //무승부 확인
     if (turn > 9) {
         move_cursor(30, 20);
         printf("Game Draw");
@@ -65,7 +93,7 @@ void check_draw() {
     }
 }
 
-void draw_board() {
+void draw_board() { //게임 보드 그리기
     int j;
     for (j = 9; j < 17; j++) {
         move_cursor(35, j);
