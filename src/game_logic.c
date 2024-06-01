@@ -79,19 +79,20 @@ void draw_board() {
             if (j != 0)
                 printf("|");
             if (board[i][j] == 3)
-                printf(" X ");
+                place_marker('X', 32 + j * 8, 10 + i * 2);
             else if (board[i][j] == 5)
-                printf(" O ");
+                place_marker('O', 32 + j * 8, 10 + i * 2);
             else
-                printf("   ");
+                place_marker(' ', 32 + j * 8, 10 + i * 2);
         }
         printf("\n");
 
         // 가로 줄이 있는 경우에만 구분선을 출력합니다.
         if (i != 2)
-            printf("-----------\n");
+            printf("------\n");
     }
 }
+
 
 
 void place_marker(char marker, int row, int col) {
