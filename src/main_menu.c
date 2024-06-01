@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <Windows.h>// Sleep함수를 사용하기 위한 헤더 파일 
 #include "main_menu.h"
 #include "game_logic.h"
 #include "move_cursor.h"
@@ -30,6 +31,9 @@ void main_menu()  // main_menu함수를 새로 만들었음
             printf("End the program\n");
             exit(1);
         default: // case 1,2,3에 해당되지 않는다면 재입력
+            system("cls");
+            printf("Please enter a number from 1 to 3!"); //범위 내에서 출력하라는 문장 출력
+            Sleep(2000);//2초 동안 지연 시간 설정
             main_menu();
     }
 }
@@ -57,8 +61,11 @@ void play_with_com() { //컴퓨터랑 게임
             break;
         case 3:
             exit(1);
-            
-        default:
+
+        default:  // case 1,2,3에 해당되지 않는다면 재입력
+            system("cls");
+            printf("Please enter a number from 1 to 3!"); //범위 내에서 출력하라는 문장 출력
+            Sleep(2000); //2초 동안 지연 시간 설정
             play_with_com();
     }
 }
