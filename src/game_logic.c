@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <conio.h>
+
 
 #include "game_logic.h"
 #include "move_cursor.h"

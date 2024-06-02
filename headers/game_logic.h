@@ -1,6 +1,10 @@
 #ifndef GAME_LOGIC_H
 #define GAME_LOGIC_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include "env.h"
+
 extern int board[10];
 extern int turn, flag;
 extern int player, comp;
