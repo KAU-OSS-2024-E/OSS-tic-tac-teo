@@ -16,3 +16,7 @@ assignees: ''
 
 ## 📄 참고 사항
 추가로 참고해야 할 사항이나 주의사항이 있다면 여기에 작성해주세요.
+
+<!-- 이슈 발급 후 이슈 페이지에서 Development의 Creat a new branch for this issue or link a pull request.를 통해 브랜치를 발급해주세요!
+브랜치 명은 "라벨명#이슈번호" 입니다.
+ex) CleanCode#39-->
