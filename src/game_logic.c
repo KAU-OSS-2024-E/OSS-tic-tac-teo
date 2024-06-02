@@ -68,10 +68,13 @@ void start_game() {
 
 void start_easy() {
     int com_random_position;
+    int rand_row, rand_col;
     
     do{
-        com_random_position = rand()%9+1;
-    } while(board[com_random_position]!=2);
+        com_random_position = rand() % 9 + 1;
+        rand_row = (com_random_position - 1) / 3;
+        rand_col = (com_random_position - 1) % 3;
+    } while(board[rand_row][rand_col]!=2);
 
     if (com_random_position == find_win_position(comp, board)) { 
         next_turn(com_random_position);
