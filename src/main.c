@@ -7,7 +7,7 @@
 #include "game_logic.h"
 
 // 전역 변수 정의
-int board[10] = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2}; // 게임 보드 초기화
+int board[3][3] = {{2, 2, 2}, {2, 2, 2}, {2, 2, 2}}; // 게임 보드 초기화
 int turn = 1, flag = 0; // 게임 턴과 승리 플래그
 int mode;
 int player, comp; // 플레이어와 컴퓨터 구분
