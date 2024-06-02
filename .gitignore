@@ -1,3 +1,18 @@
-*.exe
+# Ignore build directories
 build/
+
+# Ignore executables
+*.exe
+*.out
 *.o
+
+# Ignore Visual Studio files
+*.vcxproj
+*.vcxproj.filters
+*.sln
+
+# Ignore CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
