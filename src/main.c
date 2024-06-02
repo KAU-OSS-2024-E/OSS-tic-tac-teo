@@ -4,7 +4,7 @@
 #include <time.h>
 
 #include "main_menu.h"
-#include "game_logic.h"
+
 
 // 전역 변수 정의
 int board[3][3] = {{2, 2, 2}, {2, 2, 2}, {2, 2, 2}}; // 게임 보드 초기화

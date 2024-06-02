@@ -1,4 +1,3 @@
-#include <windows.h>
 #include "move_cursor.h"
 
 COORD coord = {0, 0}; // this is global variable

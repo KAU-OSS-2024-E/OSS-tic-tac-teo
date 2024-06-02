@@ -1,11 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <conio.h>
-#include <time.h>
-
 #include "game_logic.h"
-#include "move_cursor.h"
 #include "game_rules.h"
+#include "move_cursor.h"
 
 void player_move() {
     int pos;
