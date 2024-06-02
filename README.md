@@ -21,8 +21,10 @@ TicTacToe/
 │   ├── game_rules.c
 │   ├── main.c
 │   ├── main_menu.c
-│   └── move_cursor.c
+│   ├── move_cursor.c
+│   └── win_game.c
 ├── .gitignore
+├── CMakeLists.txt
 ├── DEVELOPE.md
 ├── LICENSE.md
 ├── Makefile
@@ -41,8 +43,42 @@ cd TicTacToe
 ## 🚀 Usage
 
 ### Compiling the Game
+See the [DEVELOPE.md](DEVELOPE.md) file for details.
 
 You can compile the game using `gcc` or `make`.
+#### Using CMake
+1. Create a build directory:
+
+```bash
+mkdir build
+cd build
+```
+2. Run CMake to configure the project:
+
+```bash
+cmake ..
+```
+3. Build the project:
+
+```bash
+cmake --build .
+```
+
+##### Running the Game
+
+Once compiled, you can run the game with:
+
+- On macOS and Linux:
+
+  ```bash
+  ./build/TicTacToe
+  ```
+
+- On Windows:
+
+  ```bash
+  TicTacToe.exe
+  ```
 
 #### Using gcc
 
@@ -64,7 +100,7 @@ make
 
 This will compile the source files and create the `TicTacToe` executable.
 
-### Running the Game
+##### Running the Game
 
 Once compiled, you can run the game with:
 
