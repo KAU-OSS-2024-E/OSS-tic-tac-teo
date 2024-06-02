@@ -1,3 +1,4 @@
+#include "game_logic.h"
 
 int find_win_position(int p, int board[3][3]) // starting of function to check whether you put value at an empty space
 {

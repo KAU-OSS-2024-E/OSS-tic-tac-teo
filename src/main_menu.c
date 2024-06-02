@@ -1,5 +1,8 @@
-#include "game_logic.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include "main_menu.h"
+#include "game_logic.h"
+#include "env.h"
 
 void main_menu()  // main_menu함수를 새로 만들었음
 {               //사용자가 첫 화면에 보았을 때 어떤 게임인지 알기 쉽고 컴튜터랑 게임을 할지 아니면 멀티플레이 게임을 할지 

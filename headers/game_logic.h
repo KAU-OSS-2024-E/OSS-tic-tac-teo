@@ -1,9 +1,6 @@
 #ifndef GAME_LOGIC_H
 #define GAME_LOGIC_H
-#include <stdio.h>
-#include <stdlib.h>
-#include <conio.h>
-#include <time.h>
+
 
 extern int board[3][3];
 extern int turn, flag;
