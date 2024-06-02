@@ -3,10 +3,12 @@
 
 extern int board[3][3];
 extern int turn, flag;
+extern int mode;
 extern int player, comp;
 
 void player_move();
 void start_game();
+void start_easy();
 void check_draw();
 void draw_board();
 void place_marker(char ch, int row, int col);
