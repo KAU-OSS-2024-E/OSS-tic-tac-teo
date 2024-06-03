@@ -9,7 +9,7 @@
 
 
 // 전역 변수 정의
-int board[SIZE][SIZE] = {
+int board[BOARD_SIZE][BOARD_SIZE] = {
     {EMPTY, EMPTY, EMPTY},
     {EMPTY, EMPTY, EMPTY},
     {EMPTY, EMPTY, EMPTY}
