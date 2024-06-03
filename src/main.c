@@ -4,6 +4,7 @@
 
 #include "env.h"
 #include "main_menu.h"
+#include "move_cursor.h"
 
 
 // 전역 변수 정의
