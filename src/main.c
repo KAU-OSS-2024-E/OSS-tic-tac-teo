@@ -15,8 +15,8 @@ int player, comp; // 플레이어와 컴퓨터 구분
 int main() {
     srand(time(NULL)); // 시드 설정
 
-    system("cls"); // 화면을 클리어
+    clear_console(); // 화면을 클리어
     main_menu(); // 메인 메뉴 함수 호출
-    getch();
+    wait_input();
     return 0;
 }
