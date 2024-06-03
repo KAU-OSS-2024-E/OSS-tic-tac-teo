@@ -1,3 +1,5 @@
+#include <conio.h>
+#include <windows.h>
 #include "env.h"
 
 COORD coord = {0, 0}; // this is global variable
