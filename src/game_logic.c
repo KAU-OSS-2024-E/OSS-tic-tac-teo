@@ -144,9 +144,9 @@ void draw_board() {
     clear_console(); // 화면을 클리어
 
     // 각 셀의 내용을 출력합니다.
-    for (int i = 0; i < SIZE; i++) {
+    for (int i = 0; i < BOARD_SIZE; i++) {
         // 가로 줄을 출력합니다.
-        for (int j = 0; j < SIZE; j++) {
+        for (int j = 0; j < BOARD_SIZE; j++) {
             if (j != 0)
                 printf("|");
             if (board[i][j] == MARK_X)
