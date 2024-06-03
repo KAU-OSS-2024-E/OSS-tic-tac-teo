@@ -1,4 +1,6 @@
+#include <stdlib.h>
 #include <unistd.h>
+
 #include "env.h"
 
 void clear_console() {
