@@ -68,7 +68,7 @@ void play_with_com() { //컴퓨터랑 게임
 void multiplay()
 {
     int choice;
-    system("cls");
+    clear_console();;
     printf("\n---------- Tic Tac Toe Game ----------");
     printf("\n--------- Multiplay ---------");
     printf("\n1 : player1 start first"); // X가 먼저 시작
@@ -91,7 +91,7 @@ void multiplay()
         case 3:
             main_menu(); //이전 화면으로 이동
         default:  // case 1,2,3에 해당되지 않는다면 재입력
-            system("cls");
+            clear_console();;
             printf("Please enter a number from 1 to 3!"); //범위 내에서 출력하라는 문장 출력
             Sleep(2000); //2초 동안 지연 시간 설정
             multiplay();
