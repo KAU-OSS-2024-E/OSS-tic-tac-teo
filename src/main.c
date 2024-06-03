@@ -9,6 +9,7 @@
 
 
 // 전역 변수 정의
+int SIZE;
 int board[SIZE][SIZE] = {
     {EMPTY, EMPTY, EMPTY},
     {EMPTY, EMPTY, EMPTY},

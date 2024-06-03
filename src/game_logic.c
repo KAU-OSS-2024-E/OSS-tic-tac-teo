@@ -79,6 +79,92 @@ void player2_move() { //player2함수
     player_move();
 
 }
+void player1_move_speed() {
+    int pos;
+    int row, col;
+
+    time_t start_time = time(NULL); // 현재 시간을 얻음
+    time_t current_time;
+
+    check_draw(); // 무승부 확인
+    draw_board(); // 게임 보드 그리기
+    move_cursor(30, 18);
+    printf("Your Turn :> ");
+    scanf("%d", &pos);
+
+    row = (pos - 1) / 3;
+    col = (pos - 1) % 3;
+
+    if (board[row][col] != 2) {
+        printf("\nwrong postion");
+        sleep_time(2000); //2초 동안 지연 시간 설정
+        player2_move_speed(); // 유효하지 않은 위치면 다시 입력
+    }
+    
+    current_time = time(NULL); // 현재 시간을 다시 얻음
+    if (current_time - start_time > limit) {
+        printf("Time over");
+        sleep_time(2000); //2초 동안 지연 시간 설정
+        player2_move_speed();
+    }
+
+    if (pos == find_win_position(player, board)) { // 플레이어가 이길 수 있는 위치인지 확인
+        next_turn(pos);
+        draw_board();
+        move_cursor(30, 20);
+        printf("Player wins");
+        wait_input();
+        exit(0);
+    }
+
+    next_turn(pos);
+    draw_board();
+    player2_move_speed();
+}
+
+void player2_move_speed() { //player2함수 
+    int pos;
+    int row, col;
+
+    time_t start_time = time(NULL); // 현재 시간을 얻음
+    time_t current_time;
+    
+    check_draw(); // 무승부 확인
+    draw_board(); // 게임 보드 그리기
+    move_cursor(30, 18);
+    printf("player2 Turn :> ");
+    scanf("%d", &pos);
+
+    row = (pos - 1) / 3;
+    col = (pos - 1) % 3;
+
+    if (board[row][col] != 2) {
+        printf("\nwrong postion");
+        sleep_time(2000); //2초 동안 지연 시간 설정
+        player1_move_speed(); // 유효하지 않은 위치면 턴이 넘어감
+    }
+
+    current_time = time(NULL); // 현재 시간을 다시 얻음
+    if (current_time - start_time > limit) {
+        printf("\nTime over");
+        sleep_time(2000); //2초 동안 지연 시간 설정
+        player1_move_speed();
+    }
+
+    if (pos == find_win_position(player2, board)) { // 플레이어2가 이길 수 있는 위치인지 확인
+        next_turn(pos);
+        draw_board();
+        move_cursor(30, 20);
+        printf("Player2 wins");
+        wait_input();
+        exit(0);
+    }
+
+    next_turn(pos);
+    draw_board();
+    check_draw();
+    player1_move_speed();
+}
 
 void start_game() {
     int com_win_position = find_win_position(comp, board);
