@@ -33,11 +33,49 @@ void player_move() {
 
     next_turn(pos);
     draw_board();
-    if (mode==1) {
+    if (mode==1) 
+    {
         check_draw();
         start_easy(); // 쉬운 모드 컴퓨터의 턴으로 전환
     } else if (mode==2)
+    {
         start_game(); // 컴퓨터의 턴으로 전환 
+    }
+    else 
+    {
+        player2_move();
+    }
+}
+
+void player2_move() { //player2함수 
+    int pos;
+    int row, col;
+    check_draw(); // 무승부 확인
+    draw_board(); // 게임 보드 그리기
+    move_cursor(30, 18);
+    printf("player2 Turn :> ");
+    scanf("%d", &pos);
+
+    row = (pos - 1) / 3;
+    col = (pos - 1) % 3;
+
+    if (board[row][col] != 2)
+        player2_move(); // 유효하지 않은 위치면 다시 입력
+    
+    if (pos == find_win_position(player2, board)) { // 플레이어2가 이길 수 있는 위치인지 확인
+        next_turn(pos);
+        draw_board();
+        move_cursor(30, 20);
+        printf("Player2 wins");
+        getch();
+        exit(0);
+    }
+
+    next_turn(pos);
+    draw_board();
+    check_draw();
+    player_move();
+
 }
 
 void start_game() {
