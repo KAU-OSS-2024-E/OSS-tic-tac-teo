@@ -1,7 +1,7 @@
 #ifndef GAME_CONSTANTS_H
 #define GAME_CONSTANTS_H
 
-#define SIZE 3
+#define BOARD_SIZE 3
 #define EMPTY 2
 #define MARK_X 3
 #define MARK_O 5
