@@ -24,7 +24,7 @@ void main_menu()  // main_menu함수를 새로 만들었음
             play_with_com();
             break;
         case 2:
-           //multiplay();
+            multiplay();
             break;
         case 3:  //프로그램 강제 종료
             printf("End the program\n");
@@ -44,7 +44,7 @@ void play_with_com() { //컴퓨터랑 게임
     printf("\n--------- Play with computer ---------");
     printf("\n1 : Easy mode"); // X가 먼저 시작
     printf("\n2 : Hard mode"); // O가 먼저 시작
-    printf("\n3 : Exit");
+    printf("\n3 : Go Back");
     printf("\nEnter your choice:>");
     scanf("%d", &mode);
     turn = 1;
@@ -56,13 +56,47 @@ void play_with_com() { //컴퓨터랑 게임
             play_with_com_hard();
             break;
         case 3:
-            exit(1);
+            main_menu(); // 이전 화면으로 이동
         default:  // case 1,2,3에 해당되지 않는다면 재입력
             clear_console();
             printf("Please enter a number from 1 to 3!"); //범위 내에서 출력하라는 문장 출력
             sleep_time(2000); //2초 동안 지연 시간 설정
             play_with_com();
     }
+}
+
+void multiplay()
+{
+    int choice;
+    system("cls");
+    printf("\n---------- Tic Tac Toe Game ----------");
+    printf("\n--------- Multiplay ---------");
+    printf("\n1 : player1 start first"); // X가 먼저 시작
+    printf("\n2 : player2 start first"); // O가 먼저 시작
+    printf("\n3 : Go Back");
+    printf("\nEnter your choice:>");
+    scanf("%d", &choice);
+    turn = 1;
+    switch (choice) {
+        case 1:
+            player2 = 1;
+            player = 0;
+            player2_move();
+            break;
+        case 2:
+            player2 = 0;
+            player = 1;
+            player_move();
+            break;
+        case 3:
+            main_menu(); //이전 화면으로 이동
+        default:  // case 1,2,3에 해당되지 않는다면 재입력
+            system("cls");
+            printf("Please enter a number from 1 to 3!"); //범위 내에서 출력하라는 문장 출력
+            Sleep(2000); //2초 동안 지연 시간 설정
+            multiplay();
+    }
+
 }
 
 void play_with_com_easy() {
@@ -81,7 +115,7 @@ void play_with_com_hard() {
     printf("\n------------- Hard mode --------------");
     printf("\n1 : Play first"); // X가 먼저 시작
     printf("\n2 : Computer play first"); // O가 먼저 시작
-    printf("\n3 : Exit");
+    printf("\n3 : Go Back");
     printf("\nEnter your choice:>");
     scanf("%d", &choice);
 
@@ -97,11 +131,12 @@ void play_with_com_hard() {
             start_game();
             break;
         case 3:
-            exit(1);
+            play_with_com(); //이전 화면으로 이동
         default:// case 1,2,3에 해당되지 않는다면 재입력
             clear_console();
             printf("Please enter a number from 1 to 3!"); //범위 내에서 출력하라는 문장 출력
             sleep_time(2000); //2초 동안 지연 시간 설정
             play_with_com();
+
     }
 }
