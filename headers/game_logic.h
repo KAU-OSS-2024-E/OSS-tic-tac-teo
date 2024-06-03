@@ -1,6 +1,7 @@
 #ifndef GAME_LOGIC_H
 #define GAME_LOGIC_H
 
+
 extern int board[3][3];
 extern int turn, flag;
 extern int mode;

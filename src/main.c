@@ -1,10 +1,11 @@
 #include <stdio.h>
-#include <conio.h>
 #include <stdlib.h>
 #include <time.h>
 
+#include "env.h"
 #include "main_menu.h"
-#include "game_logic.h"
+#include "move_cursor.h"
+
 
 // 전역 변수 정의
 int board[3][3] = {{2, 2, 2}, {2, 2, 2}, {2, 2, 2}}; // 게임 보드 초기화
@@ -15,8 +16,8 @@ int player, player2, comp; // 플레이어와 플레이어2 그리고  컴퓨터
 int main() {
     srand(time(NULL)); // 시드 설정
 
-    system("cls"); // 화면을 클리어
+    clear_console(); // 화면을 클리어
     main_menu(); // 메인 메뉴 함수 호출
-    getch();
+    wait_input();
     return 0;
 }

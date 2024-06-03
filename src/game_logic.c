@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
+
 #include <time.h>
 
-#include "game_logic.h"
-#include "move_cursor.h"
 #include "game_rules.h"
+#include "move_cursor.h"
+#include "game_logic.h"
+#include "env.h"
 
 void player_move() {
     int pos;
@@ -27,7 +28,7 @@ void player_move() {
         draw_board();
         move_cursor(30, 20);
         printf("Player wins");
-        getch();
+        wait_input();
         exit(0);
     }
 
@@ -98,7 +99,7 @@ void start_game() {
     if (flag) {
         move_cursor(30, 20);
         printf("Computer wins");
-        getch();
+        wait_input();
     } else
 
         player_move();
@@ -119,7 +120,7 @@ void start_easy() {
         draw_board();
         move_cursor(30, 20);
         printf("Computer wins");
-        getch();
+        wait_input();
         exit(0);
     }
     next_turn(com_random_position);
@@ -133,13 +134,13 @@ void check_draw() { //무승부 확인
     if (turn > 9) {
         move_cursor(30, 20);
         printf("Game Draw");
-        getch();
+        wait_input();
         exit(0);
     }
 }
 
 void draw_board() {
-    system("cls"); // 화면을 클리어
+    clear_console(); // 화면을 클리어
 
     // 각 셀의 내용을 출력합니다.
     for (int i = 0; i < 3; i++) {

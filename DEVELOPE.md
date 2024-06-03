@@ -7,7 +7,11 @@
 To make an object file of all source files and create the TicTacToe executable, run:
 
 ```bash
-gcc -Iheaders src/*.c -o TicTacToe
+gcc -I headers src/*.c -o TicTacToe
+gcc -o TicTacToe_win -I headers -I headers_for_win -I src src/*.c src_for_win/*.c
+gcc -o TicTacToe_linux -I headers -I src src/*.c src_for_linux/*.c -lncurses
+
+./TicTacToe
 ```
 
 This command compiles all source files and generates an executable named `TicTacToe`.
