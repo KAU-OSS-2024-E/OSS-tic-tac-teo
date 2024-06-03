@@ -68,7 +68,7 @@ void player2_move() { //player2함수
         draw_board();
         move_cursor(30, 20);
         printf("Player2 wins");
-        getch();
+        wait_input();
         exit(0);
     }
 

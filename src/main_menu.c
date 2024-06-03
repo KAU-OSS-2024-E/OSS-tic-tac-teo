@@ -93,7 +93,7 @@ void multiplay()
         default:  // case 1,2,3에 해당되지 않는다면 재입력
             clear_console();;
             printf("Please enter a number from 1 to 3!"); //범위 내에서 출력하라는 문장 출력
-            Sleep(2000); //2초 동안 지연 시간 설정
+            sleep_time(2000); //2초 동안 지연 시간 설정
             multiplay();
     }
 
