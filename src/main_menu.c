@@ -72,8 +72,8 @@ void multiplay()
     system("cls");
     printf("\n---------- Tic Tac Toe Game ----------");
     printf("\n--------- Multiplay ---------");
-    printf("\n1 : player1 play with x"); // X가 먼저 시작
-    printf("\n2 : player2 play with o"); // O가 먼저 시작
+    printf("\n1 : player1 start first"); // X가 먼저 시작
+    printf("\n2 : player2 start first"); // O가 먼저 시작
     printf("\n3 : Go Back");
     printf("\nEnter your choice:>");
     scanf("%d", &choice);
@@ -82,12 +82,12 @@ void multiplay()
         case 1:
             player2 = 1;
             player = 0;
-            player_move();
+            player2_move();
             break;
         case 2:
             player2 = 0;
             player = 1;
-            player2_move();
+            player_move();
             break;
         case 3:
             main_menu(); //이전 화면으로 이동
