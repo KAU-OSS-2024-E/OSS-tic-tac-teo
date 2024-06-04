@@ -35,9 +35,10 @@ void player_move() {
 
     next_turn(pos);
     draw_board();
+    check_draw();
+
     if (mode==1) 
-    {
-        check_draw();
+    {   
         start_easy(); // 쉬운 모드 컴퓨터의 턴으로 전환
     } else if (mode==2)
     {
@@ -45,7 +46,7 @@ void player_move() {
     }
     else 
     {
-        player2_move();
+        player2_move(); // 멀티플레이 플레이어 턴으로 전환
     }
 }
 
@@ -79,92 +80,100 @@ void player2_move() { //player2함수
     player_move();
 
 }
+
 void player1_move_speed() {
     int pos;
     int row, col;
+    time_t start_time, current_time;
 
-    time_t start_time = time(NULL); // 현재 시간을 얻음
-    time_t current_time;
-
-    check_draw(); // 무승부 확인
-    draw_board(); // 게임 보드 그리기
-    move_cursor(30, 18);
+    start_time = time(NULL); // 현재 시간을 얻음
+    
+    check_draw();
+    draw_board();
+    move_cursor(CURSOR_X, CURSOR_Y - 2);
     printf("Your Turn :> ");
     scanf("%d", &pos);
 
     row = (pos - 1) / 3;
     col = (pos - 1) % 3;
 
-    if (board[row][col] != 2) {
-        printf("\nwrong postion");
-        sleep_time(2000); //2초 동안 지연 시간 설정
+    if (board[row][col] != EMPTY) {
+        move_cursor(CURSOR_X, CURSOR_Y);
+        printf("wrong postion");
+        sleep_time(1000);
         player2_move_speed(); // 유효하지 않은 위치면 다시 입력
     }
-    
+
     current_time = time(NULL); // 현재 시간을 다시 얻음
     if (current_time - start_time > limit) {
-        printf("\nTime over");
+        move_cursor(CURSOR_X, CURSOR_Y);
+        printf("Time Over");
         sleep_time(1000); //2초 동안 지연 시간 설정
         player2_move_speed();
     }
 
     if (pos == find_win_position(player, board)) { // 플레이어가 이길 수 있는 위치인지 확인
-        next_turn(pos);
+        next_turn_multi(pos, player);
         draw_board();
-        move_cursor(30, 20);
-        printf("Player wins");
+        move_cursor(CURSOR_X, CURSOR_Y);
+        printf("Player1 wins");
         wait_input();
         exit(0);
     }
 
-    next_turn(pos);
+    next_turn_multi(pos, player);
     draw_board();
+    check_draw();
     player2_move_speed();
 }
 
 void player2_move_speed() { //player2함수 
     int pos;
     int row, col;
+    time_t start_time, current_time;
 
-    time_t start_time = time(NULL); // 현재 시간을 얻음
-    time_t current_time;
+    start_time = time(NULL);
     
-    check_draw(); // 무승부 확인
-    draw_board(); // 게임 보드 그리기
-    move_cursor(30, 18);
+    check_draw();
+    draw_board();
+    move_cursor(CURSOR_X, CURSOR_Y - 2);
     printf("player2 Turn :> ");
     scanf("%d", &pos);
 
     row = (pos - 1) / 3;
     col = (pos - 1) % 3;
 
-    if (board[row][col] != 2) {
-        printf("\nwrong postion");
-        sleep_time(2000); //2초 동안 지연 시간 설정
-        player1_move_speed(); // 유효하지 않은 위치면 턴이 넘어감
+    if (board[row][col] != EMPTY) {
+        move_cursor(CURSOR_X, CURSOR_Y);
+        printf("wrong postion");
+        sleep_time(1000);
+        player1_move_speed(); // 유효하지 않은 위치면 다시 입력
     }
 
     current_time = time(NULL); // 현재 시간을 다시 얻음
+
     if (current_time - start_time > limit) {
-        printf("\nTime over");
+        move_cursor(CURSOR_X, CURSOR_Y);
+        printf("Time Over");
         sleep_time(1000); //2초 동안 지연 시간 설정
         player1_move_speed();
     }
 
     if (pos == find_win_position(player2, board)) { // 플레이어2가 이길 수 있는 위치인지 확인
-        next_turn(pos);
+        next_turn_multi(pos, player2);
         draw_board();
-        move_cursor(30, 20);
+        move_cursor(CURSOR_X, CURSOR_Y);
         printf("Player2 wins");
         wait_input();
         exit(0);
     }
 
-    next_turn(pos);
+    next_turn_multi(pos, player2);
     draw_board();
     check_draw();
     player1_move_speed();
 }
+
 
 void start_game() {
     int com_win_position = find_win_position(comp, board);
@@ -264,6 +273,20 @@ void next_turn(int position) {
     col = (position - 1) % 3;
 
     if (turn % 2)
+        board[row][col] = MARK_X;
+    else
+        board[row][col] = MARK_O;
+    turn++;
+}
+
+void next_turn_multi(int position, int p) {
+    // p==1 then X   p==0  then  O
+    int row, col;
+
+    row = (position - 1) / 3;
+    col = (position - 1) % 3;
+
+    if (p)
         board[row][col] = MARK_X;
     else
         board[row][col] = MARK_O;

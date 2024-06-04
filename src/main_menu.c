@@ -65,7 +65,7 @@ void play_with_com() { //컴퓨터랑 게임
     }
 }
 
-void multiplay() // 멀티 플레이
+void multiplay()
 {
     int choice;
     clear_console();;
@@ -76,13 +76,93 @@ void multiplay() // 멀티 플레이
     printf("\n3 : Go Back");
     printf("\nEnter your choice:>");
     scanf("%d", &choice);
-    turn = 1;
+
     switch (choice) {
         case 1:
             multi_normal();
             break;
         case 2:
             multi_speed();
+            break;
+        case 3:
+            main_menu();
+            break;
+        default:
+            clear_console();;
+            printf("Please enter a number from 1 to 3!"); //범위 내에서 출력하라는 문장 출력
+            sleep_time(2000); //2초 동안 지연 시간 설정
+            multiplay();
+    }
+}
+
+void multi_normal()
+{
+    int choice;
+    clear_console();;
+    printf("\n---------- Tic Tac Toe Game ----------");
+    printf("\n--------- Multiplay ---------");
+    printf("\n1 : player1 start first"); // X가 먼저 시작
+    printf("\n2 : player2 start first"); // O가 먼저 시작
+    printf("\n3 : Go Back");
+    printf("\nEnter your choice:>");
+    scanf("%d", &choice);
+    turn = 1;
+    switch (choice) {
+        case 1:
+            player2 = 0;
+            player = 1;
+            player_move();
+            break;
+        case 2:
+            player2 = 1;
+            player = 0;
+            player2_move();
+            break;
+        case 3:
+            main_menu(); //이전 화면으로 이동
+        default:  // case 1,2,3에 해당되지 않는다면 재입력
+            clear_console();;
+            printf("Please enter a number from 1 to 3!"); //범위 내에서 출력하라는 문장 출력
+            sleep_time(2000); //2초 동안 지연 시간 설정
+            multiplay();
+    }
+
+}
+
+void multi_speed()
+{
+    clear_console();;
+    printf("\n---------- Tic Tac Toe Game ----------");
+    printf("\n--------- Speed Mode ---------");
+    printf("\nEnter the time limit (in seconds, 0 to go back):");
+    printf("\nEnter your choice:>");
+    scanf("%d", &limit);
+
+    if (limit==0) 
+        main_menu();
+    
+    int choice;
+    clear_console();;
+    printf("\n---------- Tic Tac Toe Game ----------");
+    printf("\n--------- Speed Mode ---------");
+    printf("\nlimit time : %d", limit);
+    printf("\n1 : player1 start first"); // X가 먼저 시작
+    printf("\n2 : player2 start first"); // O가 먼저 시작
+    printf("\n3 : Go Back");
+    printf("\nEnter your choice:>");
+    scanf("%d", &choice);
+
+    turn = 1;
+    switch (choice) {
+        case 1:
+            player2 = 0;
+            player = 1;
+            player1_move_speed();
+            break;
+        case 2:
+            player2 = 1;
+            player = 0;
+            player2_move_speed();
             break;
         case 3:
             main_menu(); //이전 화면으로 이동
@@ -134,53 +214,4 @@ void play_with_com_hard() {
             play_with_com();
 
     }
-}
-
-void multi_normal() {
-    int choice;
-    clear_console();;
-    printf("\n---------- Tic Tac Toe Game ----------");
-    printf("\n--------- Normal Mode ---------");
-    printf("\n1 : player1 start first"); // X가 먼저 시작
-    printf("\n2 : player2 start first"); // O가 먼저 시작
-    printf("\n3 : Go Back");
-    printf("\nEnter your choice:>");
-    scanf("%d", &choice);
-    turn = 1;
-    switch (choice) {
-        case 1:
-            player2 = 0;
-            player = 1;
-            player_move();
-            break;
-        case 2:
-            player2 = 1;
-            player = 0;
-            player2_move();
-            break;
-        case 3:
-            main_menu(); //이전 화면으로 이동
-        default:  // case 1,2,3에 해당되지 않는다면 재입력
-            clear_console();
-            printf("Please enter a number from 1 to 3!"); //범위 내에서 출력하라는 문장 출력
-            sleep_time(2000); //2초 동안 지연 시간 설정
-            multiplay();
-    }
-}
-
-void multi_speed() {
-    clear_console();;
-    printf("\n---------- Tic Tac Toe Game ----------");
-    printf("\n--------- Speed Mode ---------");
-    printf("\nEnter the time limit (in seconds, 0 to go back):");
-    printf("\nEnter your choice:>");
-    scanf("%d", &limit);
-
-    if (limit==0) 
-        main_menu();
-    
-    turn = 1;
-    player2 = 1;
-    player = 0;
-    player1_move_speed();
 }

@@ -17,6 +17,7 @@ void check_draw();
 void draw_board();
 void place_marker(char ch, int row, int col);
 void next_turn(int position);
+void next_turn_multi(int position, int p);
 int find_best_move();
 int find_next_best_move();
 
