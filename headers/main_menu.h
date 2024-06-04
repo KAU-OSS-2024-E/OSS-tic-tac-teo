@@ -8,5 +8,7 @@ void play_with_com(); //기존 menu함수가 컴퓨터랑 게임하는 기능이
 void multiplay();//multiplay()함수 선언 (새로 추가된 함수)
 void play_with_com_easy();
 void play_with_com_hard();
+void multi_normal();
+void multi_speed();
 
 #endif

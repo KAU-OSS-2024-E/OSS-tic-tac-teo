@@ -71,8 +71,39 @@ void multiplay() //멀티 플레이 함수
     clear_console();;
     printf("\n---------- Tic Tac Toe Game ----------");
     printf("\n--------- Multiplay ---------");
+    printf("\n1 : Normal Mode"); // X가 먼저 시작
+    printf("\n2 : Speed Mode"); // O가 먼저 시작
+    printf("\n3 : Go Back");
+    printf("\nEnter your choice:>");
+    scanf("%d", &choice);
+
+    switch (choice) {
+        case 1:
+            multi_normal();
+            break;
+        case 2:
+            multi_speed();
+            break;
+        case 3:
+            main_menu();
+            break;
+        default:
+            clear_console();;
+            printf("Please enter a number from 1 to 3!"); //범위 내에서 출력하라는 문장 출력
+            sleep_time(2000); //2초 동안 지연 시간 설정
+            multiplay();
+    }
+}
+
+void multi_normal()
+{
+    int choice;
+    clear_console();;
+    printf("\n---------- Tic Tac Toe Game ----------");
+    printf("\n--------- Multiplay ---------");
     printf("\n1 : player1 start first"); // player1로 먼저 시작
     printf("\n2 : player2 start first"); // player2로 먼저 시작
+
     printf("\n3 : Go Back");
     printf("\nEnter your choice:>");
     scanf("%d", &choice);
@@ -80,13 +111,13 @@ void multiplay() //멀티 플레이 함수
     switch (choice) {
         case 1:
             player2 = 0;
-            player = 1; // player1 승 flag값 사용
-            player_move(); //player_move함수 호출
+            player = 1;
+            player_move();
             break;
         case 2:
-            player2 = 1; //player2 승 flag값 사용
+            player2 = 1;
             player = 0;
-            player2_move(); //player2_move함수 호출
+            player2_move();
             break;
         case 3:
             main_menu(); //이전 화면으로 이동
@@ -97,6 +128,51 @@ void multiplay() //멀티 플레이 함수
             multiplay();
     }
 
+}
+
+void multi_speed()
+{
+    clear_console();;
+    printf("\n---------- Tic Tac Toe Game ----------");
+    printf("\n--------- Speed Mode ---------");
+    printf("\nEnter the time limit (in seconds, 0 to go back):");
+    printf("\nEnter your choice:>");
+    scanf("%d", &limit);
+
+    if (limit==0) 
+        main_menu();
+    
+    int choice;
+    clear_console();;
+    printf("\n---------- Tic Tac Toe Game ----------");
+    printf("\n--------- Speed Mode ---------");
+    printf("\nlimit time : %d", limit);
+    printf("\n1 : player1 start first"); // X가 먼저 시작
+    printf("\n2 : player2 start first"); // O가 먼저 시작
+    printf("\n3 : Go Back");
+    printf("\nEnter your choice:>");
+    scanf("%d", &choice);
+
+    turn = 1;
+    switch (choice) {
+        case 1:
+            player2 = 0;
+            player = 1;// player1 승 flag값 사용
+            player1_move_speed();//player_move함수 호출
+            break;
+        case 2:
+            player2 = 1;//player2 승 flag값 사용
+            player = 0;
+            player2_move_speed();//player2_move함수 호출
+            break;
+        case 3:
+            main_menu(); //이전 화면으로 이동
+        default:  // case 1,2,3에 해당되지 않는다면 재입력
+            clear_console();
+            printf("Please enter a number from 1 to 3!"); //범위 내에서 출력하라는 문장 출력
+            sleep_time(2000); //2초 동안 지연 시간 설정
+            multiplay();
+    }
 }
 
 void play_with_com_easy() {

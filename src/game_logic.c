@@ -35,12 +35,13 @@ void player_move() { // 플레이어의 움직임 처리 함수입니다.
 
     next_turn(pos);
     draw_board();
+    check_draw();
+
     if (mode==1) 
-    {
-        check_draw();
+    {   
         start_easy(); // 쉬운 모드 컴퓨터의 턴으로 전환합니다.
-    } 
-    else if (mode==2)
+    } else if (mode==2)
+
     {
         start_game(); // 컴퓨터의 턴으로 전환합니다.
     }
@@ -80,10 +81,104 @@ void player2_move() { //플레이어2의 움직임 처리 함수입니다.
     player_move(); //플레이어의 턴으로 전환합니다.
 }
 
+void player1_move_speed() {
+    int pos;
+    int row, col;
+    time_t start_time, current_time;
+
+    start_time = time(NULL); // 현재 시간을 얻음
+    
+    check_draw();
+    draw_board();
+    move_cursor(CURSOR_X, CURSOR_Y - 2);
+    printf("Your Turn :> ");
+    scanf("%d", &pos);
+
+    row = (pos - 1) / 3;
+    col = (pos - 1) % 3;
+
+    if (board[row][col] != EMPTY) {
+        move_cursor(CURSOR_X, CURSOR_Y);
+        printf("wrong postion");
+        sleep_time(1000);
+        player2_move_speed(); // 유효하지 않은 위치면 다시 입력
+    }
+
+    current_time = time(NULL); // 현재 시간을 다시 얻음
+    if (current_time - start_time > limit) {
+        move_cursor(CURSOR_X, CURSOR_Y);
+        printf("Time Over");
+        sleep_time(1000); //2초 동안 지연 시간 설정
+        player2_move_speed();
+    }
+
+    if (pos == find_win_position(player, board)) { // 플레이어가 이길 수 있는 위치인지 확인
+        next_turn_multi(pos, player);
+        draw_board();
+        move_cursor(CURSOR_X, CURSOR_Y);
+        printf("Player1 wins");
+        wait_input();
+        exit(0);
+    }
+
+    next_turn_multi(pos, player);
+    draw_board();
+    check_draw();
+    player2_move_speed();
+}
+
+void player2_move_speed() { //player2함수 
+    int pos;
+    int row, col;
+    time_t start_time, current_time;
+
+    start_time = time(NULL);
+    
+    check_draw();
+    draw_board();
+    move_cursor(CURSOR_X, CURSOR_Y - 2);
+    printf("player2 Turn :> ");
+    scanf("%d", &pos);
+
+    row = (pos - 1) / 3;
+    col = (pos - 1) % 3;
+
+    if (board[row][col] != EMPTY) {
+        move_cursor(CURSOR_X, CURSOR_Y);
+        printf("wrong postion");
+        sleep_time(1000);
+        player1_move_speed(); // 유효하지 않은 위치면 다시 입력
+    }
+
+    current_time = time(NULL); // 현재 시간을 다시 얻음
+
+    if (current_time - start_time > limit) {
+        move_cursor(CURSOR_X, CURSOR_Y);
+        printf("Time Over");
+        sleep_time(1000); //2초 동안 지연 시간 설정
+        player1_move_speed();
+    }
+
+    if (pos == find_win_position(player2, board)) { // 플레이어2가 이길 수 있는 위치인지 확인
+        next_turn_multi(pos, player2);
+        draw_board();
+        move_cursor(CURSOR_X, CURSOR_Y);
+        printf("Player2 wins");
+        wait_input();
+        exit(0);
+    }
+
+    next_turn_multi(pos, player2);
+    draw_board();
+    check_draw();
+    player1_move_speed();
+}
+
 void start_game() { // 게임 시작 시 컴퓨터의 움직임을 처리하는 함수입니다.
     int com_win_position = find_win_position(comp, board); // 컴퓨터가 이길 수 있는 위치를 찾습니다.
     int player_win_position = find_win_position(player, board); // 플레이어가 이길 수 있는 위치를 찾습니다.
     int best_move = find_best_move(); // 최선의 수를 찾습니다.
+
 
     if (com_win_position) {
         next_turn(com_win_position); // 컴퓨터가 이길 수 있는 위치가 있으면 해당 위치에 마커를 놓고 턴을 넘깁니다.
@@ -182,7 +277,23 @@ void next_turn(int position) { // 다음 턴을 처리하는 함수입니다.
     turn++; // turn 값을 증가시킵니다.
 }
 
-int find_best_move() { // 최선의 움직임을 찾는 함수입니다.
+
+void next_turn_multi(int position, int p) {
+    // p==1 then X   p==0  then  O
+    int row, col;
+
+    row = (position - 1) / 3;
+    col = (position - 1) % 3;
+
+    if (p)
+        board[row][col] = MARK_X;
+    else
+        board[row][col] = MARK_O;
+    turn++;
+}
+
+int find_best_move() {
+
     if (board[1][1] == EMPTY)
         return 5;
     if (board[0][1] == EMPTY)
