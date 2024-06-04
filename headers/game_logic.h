@@ -12,12 +12,12 @@ void player_2_turn();//milti_player_2_turn 함수 선언
 void player_1_turn_speed();
 void player_2_turn_speed();
 
-void start_game();
-void start_easy();
+void computer_turn_hard();
+void computer_turn_easy();
 
 
 void next_turn(int position);
-void next_turn_multi(int position, int p);
+void next_turn_multi(int position, int player);
 int find_best_move();
 int find_next_best_move();
 

@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "env.h"
-#include "game_menu.h"
 #include "game_logic.h"
-#include "game_rules.h"
 #include "move_cursor.h"
 #include "game_constants.h"
 

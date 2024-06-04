@@ -2,14 +2,11 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "game_menu.h"
 #include "game_logic.h"
 #include "game_rules.h"
 #include "move_cursor.h"
 #include "game_constants.h"
 #include "console_output.h"
-#include "env.h"
-
 
 void player_1_turn() { // 플레이어의 움직임 처리 함수입니다.
     int pos;
@@ -37,17 +34,16 @@ void player_1_turn() { // 플레이어의 움직임 처리 함수입니다.
     board_output();
     check_draw();
 
-    if (mode==1) 
-    {   
-        start_easy(); // 쉬운 모드 컴퓨터의 턴으로 전환합니다.
-    } else if (mode==2)
-
-    {
-        start_game(); // 컴퓨터의 턴으로 전환합니다.
-    }
-    else 
-    {
-        player_2_turn(); // player2의 턴으로 전환합니다.
+    switch (mode){
+        case 1: 
+            computer_turn_easy(); // 쉬운 모드 컴퓨터의 턴으로 전환합니다.
+            break;
+        case 2:
+            computer_turn_hard(); // 컴퓨터의 턴으로 전환합니다.
+            break;
+        default:
+            player_2_turn(); // player2의 턴으로 전환합니다.
+            break;
     }
 }
 
@@ -160,7 +156,7 @@ void player_2_turn_speed() { //player2함수
     player_1_turn_speed();
 }
 
-void start_game() { // 게임 시작 시 컴퓨터의 움직임을 처리하는 함수입니다.
+void computer_turn_hard() { // 게임 시작 시 컴퓨터의 움직임을 처리하는 함수입니다.
     int com_win_position = find_win_position(computer, board); // 컴퓨터가 이길 수 있는 위치를 찾습니다.
     int player_win_position = find_win_position(player_1, board); // 플레이어가 이길 수 있는 위치를 찾습니다.
     int best_move = find_best_move(); // 최선의 수를 찾습니다.
@@ -186,7 +182,7 @@ void start_game() { // 게임 시작 시 컴퓨터의 움직임을 처리하는 
         player_1_turn();
 }
 
-void start_easy() {
+void computer_turn_easy() {
     int com_random_position;
     int rand_row, rand_col;
     
