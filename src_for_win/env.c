@@ -1,3 +1,5 @@
+#include <conio.h>
+#include <windows.h>
 #include "env.h"
 
 void clear_console() {
