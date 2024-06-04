@@ -22,7 +22,7 @@ void player_move() { // 플레이어의 움직임 처리 함수입니다.
     col = (pos - 1) % 3; // 사용자로부터 입력받은 1 ~ 9까지의 입력값을 2차원 배열의 위치에 알맞은 값으로 변경합니다.
 
     if (board[row][col] != EMPTY)
-        player_move(); // 유효하지 않은 위치면 다시 입력받습니다.
+        player_move(); // 유효하지 않은 위치면 재귀 호출을 통해 다시 입력받습니다.
 
     if (pos == find_win_position(player, board)) { // 플레이어가 이길 수 있는 위치인지 확인합니다.
         next_turn(pos); // 정해진 위치에 마커를 표시하고 다음 턴으로 넘어갑니다.
@@ -57,28 +57,27 @@ void player2_move() { //플레이어2의 움직임 처리 함수입니다.
     draw_board(); 
     move_cursor(CURSOR_X, CURSOR_Y - 2);
     printf("player2 Turn :> ");
-    scanf("%d", &pos);
+    scanf("%d", &pos); // player2의 입력을 받아 pos 변수에 저장
 
     row = (pos - 1) / 3;
     col = (pos - 1) % 3; 
 
     if (board[row][col] != EMPTY)
-        player2_move(); // 유효하지 않은 위치면 다시 입력받습니다.
+        player2_move(); // 유효하지 않은 위치면 재귀 호출을 통해 다시 입력받습니다.
     
     if (pos == find_win_position(player2, board)) { // 플레이어2가 이길 수 있는 위치인지 확인합니다.
         next_turn(pos);
         draw_board();
         move_cursor(CURSOR_X, CURSOR_Y);
-        printf("Player2 wins");
+        printf("Player2 wins");//player2 승리 문장 출력
         wait_input();
         exit(0);
     }
 
-    next_turn(pos);
+    next_turn(pos); // 정해진 위치에 플레이어2의 마커를 표시하고 다음 턴으로 넘어갑니다. 
     draw_board();
     check_draw();
     player_move(); //플레이어의 턴으로 전환합니다.
-
 }
 
 void start_game() { // 게임 시작 시 컴퓨터의 움직임을 처리하는 함수입니다.
