@@ -71,8 +71,8 @@ void multiplay() // normal mode, speed mode 선택
     clear_console();;
     printf("\n---------- Tic Tac Toe Game ----------");
     printf("\n--------- Multiplay ---------");
-    printf("\n1 : player1 start first"); // X가 먼저 시작
-    printf("\n2 : player2 start first"); // O가 먼저 시작
+    printf("\n1 : Normal Mode"); // X가 먼저 시작
+    printf("\n2 : Speed Mode"); // O가 먼저 시작
     printf("\n3 : Go Back");
     printf("\nEnter your choice:>");
     scanf("%d", &choice);
@@ -141,12 +141,61 @@ void play_with_com_hard() {
     }
 }
 
+// 일반 모드 구현
 void multi_normal() {
-    int choice
-}
-// 플레이 순서 선택 
+    int choice;
+    clear_console();
+    printf("\n---------- Tic Tac Toe Game ----------");
+    printf("\n------------- Normal mode --------------");
+    printf("\n1 : player_move");
+    printf("\n2 : player2_move");
+    printf("\n3 : Go Back");
+    printf("\nEnter your choice:>");
+    scanf("%d", &choice);
 
-void multi_speed() {} 
-// 변수 limit으로 제한 시간을 입력하도록 설정
-// 0은 go back
-// 실행 함수는  player1_move_speed()과 player2_move_speed()입니다.
+    switch (choice) {
+        case 1:
+            player = 1;
+            comp = 0;
+            player1_move_speed();
+            break;
+        case 2:
+            player = 0;
+            comp = 1;
+            start_game();
+            break;
+        case 3:
+            multiplay();
+        default:
+            clear_console();
+            printf("Please enter a number from 1 to 3!");
+            sleep_time(2000);
+            multiplay();  // 재귀 호출 수정
+    }
+}
+
+
+//스피드 모드 구현
+void multi_speed() {
+    int limit;
+    clear_console();
+    printf("\n---------- Tic Tac Toe Game ----------");
+    printf("\n------------- Speed Mode --------------");
+    printf("\nEnter the time limit (in seconds, 0 to go back):");
+    scanf("%d", &limit);
+
+    if (limit == 0) {
+        multiplay();
+    } 
+
+turn = 1 
+        player = 1; // player1이 먼저 시작
+        comp = 0; // player2는 컴퓨터
+        player1_move_speed();
+	break;
+	player2 = 1; // player2가 다음 차례
+	comp = 0;  // player1은 사람
+	player2_move_speed();
+	break;
+}
+
