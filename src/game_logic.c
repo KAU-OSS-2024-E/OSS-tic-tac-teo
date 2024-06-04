@@ -49,34 +49,34 @@ void player_move() {
     }
 }
 
-void player2_move() { //player2함수 
+void player2_move() { //player2_move함수 정의 부분
     int pos;
     int row, col;
     check_draw(); // 무승부 확인
     draw_board(); // 게임 보드 그리기
     move_cursor(CURSOR_X, CURSOR_Y - 2);
     printf("player2 Turn :> ");
-    scanf("%d", &pos);
+    scanf("%d", &pos); // player2의 입력을 받아 pos 변수에 저장
 
-    row = (pos - 1) / 3;
-    col = (pos - 1) % 3;
+    row = (pos - 1) / 3; // 입력받은 위치를 행으로 변환
+    col = (pos - 1) % 3; // 입력받은 위치를 열로 변환
 
-    if (board[row][col] != EMPTY)
-        player2_move(); // 유효하지 않은 위치면 다시 입력
+    if (board[row][col] != EMPTY)// 선택한 위치가 비어있지 않다면 (이미 다른 플레이어가 선택한 경우)
+        player2_move(); //다시 입력을 받도록 player2_move 함수를 재귀적으로 호출
     
     if (pos == find_win_position(player2, board)) { // 플레이어2가 이길 수 있는 위치인지 확인
-        next_turn(pos);
+        next_turn(pos);// player2의 선택 위치를 보드에 반영
         draw_board();
         move_cursor(CURSOR_X, CURSOR_Y);
-        printf("Player2 wins");
+        printf("Player2 wins");//player2 승리 문장 출력
         wait_input();
         exit(0);
     }
 
-    next_turn(pos);
-    draw_board();
-    check_draw();
-    player_move();
+    next_turn(pos);// player2의 선택 위치를 보드에 반영
+    draw_board();// 보드를 다시 그림
+    check_draw();// 무승부인지 확인
+    player_move();// player1의 턴으로 이동 (재귀 호출)
 
 }
 
