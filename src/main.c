@@ -17,6 +17,7 @@ int board[BOARD_SIZE][BOARD_SIZE] = {
 int turn = 1, flag = 0; // 게임 턴과 승리 플래그
 int mode;
 int player, player2, comp; // 플레이어와 플레이어2 그리고  컴퓨터 구분
+int limit;
 
 int main() {
     srand(time(NULL)); // 시드 설정

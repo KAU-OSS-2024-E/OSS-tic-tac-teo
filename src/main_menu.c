@@ -65,7 +65,7 @@ void play_with_com() { //컴퓨터랑 게임
     }
 }
 
-void multiplay() // normal mode, speed mode 선택
+void multiplay() // 멀티 플레이
 {
     int choice;
     clear_console();;
@@ -79,14 +79,10 @@ void multiplay() // normal mode, speed mode 선택
     turn = 1;
     switch (choice) {
         case 1:
-            player2 = 1;
-            player = 0;
-            player2_move();
+            multi_normal();
             break;
         case 2:
-            player2 = 0;
-            player = 1;
-            player_move();
+            multi_speed();
             break;
         case 3:
             main_menu(); //이전 화면으로 이동
@@ -96,7 +92,6 @@ void multiplay() // normal mode, speed mode 선택
             sleep_time(2000); //2초 동안 지연 시간 설정
             multiplay();
     }
-
 }
 
 void play_with_com_easy() {
@@ -141,61 +136,51 @@ void play_with_com_hard() {
     }
 }
 
-// 일반 모드 구현
 void multi_normal() {
     int choice;
-    clear_console();
+    clear_console();;
     printf("\n---------- Tic Tac Toe Game ----------");
-    printf("\n------------- Normal mode --------------");
-    printf("\n1 : player_move");
-    printf("\n2 : player2_move");
+    printf("\n--------- Normal Mode ---------");
+    printf("\n1 : player1 start first"); // X가 먼저 시작
+    printf("\n2 : player2 start first"); // O가 먼저 시작
     printf("\n3 : Go Back");
     printf("\nEnter your choice:>");
     scanf("%d", &choice);
-
+    turn = 1;
     switch (choice) {
         case 1:
-            player = 1;
-            comp = 0;
-            player1_move_speed();
+            player2 = 1;
+            player = 0;
+            player2_move();
             break;
         case 2:
-            player = 0;
-            comp = 1;
-            start_game();
+            player2 = 0;
+            player = 1;
+            player_move();
             break;
         case 3:
-            multiplay();
-        default:
+            main_menu(); //이전 화면으로 이동
+        default:  // case 1,2,3에 해당되지 않는다면 재입력
             clear_console();
-            printf("Please enter a number from 1 to 3!");
-            sleep_time(2000);
-            multiplay();  // 재귀 호출 수정
+            printf("Please enter a number from 1 to 3!"); //범위 내에서 출력하라는 문장 출력
+            sleep_time(2000); //2초 동안 지연 시간 설정
+            multiplay();
     }
 }
 
-
-//스피드 모드 구현
 void multi_speed() {
-    int limit;
-    clear_console();
+    clear_console();;
     printf("\n---------- Tic Tac Toe Game ----------");
-    printf("\n------------- Speed Mode --------------");
+    printf("\n--------- Speed Mode ---------");
     printf("\nEnter the time limit (in seconds, 0 to go back):");
+    printf("\nEnter your choice:>");
     scanf("%d", &limit);
 
-    if (limit == 0) {
-        multiplay();
-    } 
-
-turn = 1 
-        player = 1; // player1이 먼저 시작
-        comp = 0; // player2는 컴퓨터
-        player1_move_speed();
-	break;
-	player2 = 1; // player2가 다음 차례
-	comp = 0;  // player1은 사람
-	player2_move_speed();
-	break;
+    if (limit==0) 
+        main_menu();
+    
+    turn = 1;
+    player2 = 1;
+    player = 0;
+    player2_move_speed();
 }
-

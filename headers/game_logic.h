@@ -4,8 +4,8 @@
 extern int board[3][3];
 extern int turn, flag;
 extern int mode;
-extern int limit;
 extern int player,player2,comp; //player2전역 변수 선언 시켜줌
+extern int limit;
 
 void player_move();
 void player2_move();//player2함수 생성
