@@ -1,5 +1,12 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "env.h"
+#include "game_menu.h"
 #include "game_logic.h"
+#include "game_rules.h"
+#include "move_cursor.h"
 #include "game_constants.h"
+
 
 int find_win_position(int p, int board[BOARD_SIZE][BOARD_SIZE]) {
   int i, j;
@@ -44,4 +51,14 @@ int find_win_position(int p, int board[BOARD_SIZE][BOARD_SIZE]) {
 
 
   return 0;
+}
+
+
+void check_draw() { //무승부 조건을 확인하는 함수입니다.
+    if (turn > 9) { // 보드가 다 채워졌고 승패가 정해지지 않았다면 무승부입니다.
+        move_cursor(CURSOR_X, CURSOR_Y);
+        printf("Game Draw");
+        wait_input();
+        exit(0);
+    }
 }
