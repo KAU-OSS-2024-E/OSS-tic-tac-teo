@@ -104,7 +104,7 @@ void player1_move_speed() {
     current_time = time(NULL); // 현재 시간을 다시 얻음
     if (current_time - start_time > limit) {
         printf("\nTime over");
-        sleep_time(2000); //2초 동안 지연 시간 설정
+        sleep_time(1000); //2초 동안 지연 시간 설정
         player2_move_speed();
     }
 
@@ -147,7 +147,7 @@ void player2_move_speed() { //player2함수
     current_time = time(NULL); // 현재 시간을 다시 얻음
     if (current_time - start_time > limit) {
         printf("\nTime over");
-        sleep_time(2000); //2초 동안 지연 시간 설정
+        sleep_time(1000); //2초 동안 지연 시간 설정
         player1_move_speed();
     }
 

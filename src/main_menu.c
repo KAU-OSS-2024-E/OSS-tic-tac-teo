@@ -149,14 +149,14 @@ void multi_normal() {
     turn = 1;
     switch (choice) {
         case 1:
-            player2 = 1;
-            player = 0;
-            player2_move();
-            break;
-        case 2:
             player2 = 0;
             player = 1;
             player_move();
+            break;
+        case 2:
+            player2 = 1;
+            player = 0;
+            player2_move();
             break;
         case 3:
             main_menu(); //이전 화면으로 이동
@@ -182,5 +182,5 @@ void multi_speed() {
     turn = 1;
     player2 = 1;
     player = 0;
-    player2_move_speed();
+    player1_move_speed();
 }
