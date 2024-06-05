@@ -40,14 +40,7 @@ cd OSS_tic_tac_toe
 ```
 ### Installing Dependencies (Linux)
 For Linux systems, you can use the provided setup.sh script to install necessary dependencies.
-1. Make the script executable:
-```bash
-chmod +x setup.sh
-```
-2. Run the script
-```bash
-./setup.sh
-```
+
 This script will update the package list and install the necessary packages (libncurses5-dev and libncursesw5-dev).
 ```bash
 sudo apt-get update
