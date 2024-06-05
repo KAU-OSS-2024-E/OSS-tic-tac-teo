@@ -25,6 +25,12 @@ OSS_tic_tac_toe/
 │   ├── main.c
 │   ├── game_menu.c
 │   └── console_output.c
+├── src_for_win
+│   ├── env.c
+│   └── move.c
+├── src_for_win
+│   ├── env.c
+│   └── move.c
 ├── .gitignore
 ├── CMakeLists.txt
 ├── DEVELOPE.md
