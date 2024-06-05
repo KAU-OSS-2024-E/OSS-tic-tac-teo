@@ -3,7 +3,7 @@
 
 extern int board[3][3];
 extern int turn, flag;
-extern int mode;
+extern int game_mode;
 extern int player_1,player_2,computer; //player2전역 변수 추가적으로 선언 시켜줌
 extern int game_time_limit;
 

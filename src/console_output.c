@@ -8,8 +8,8 @@
 void game_menu_output() {               
     clear_console();
     printf("\n---------- Tic Tac Toe Game ----------");
-    printf("\n1. Play with computer ");
-    printf("\n2. multi_mode");
+    printf("\n1. Single Mode (Play with computer) ");
+    printf("\n2. Multi Mode");
     printf("\n3. Exit");
     printf("\nEnter your choice:>");
 }
@@ -17,7 +17,7 @@ void game_menu_output() {
 void single_mode_output() { //컴퓨터랑 게임 
     clear_console();
     printf("\n---------- Tic Tac Toe Game ----------");
-    printf("\n--------- Play with computer ---------");
+    printf("\n------------- Single Mode ------------");
     printf("\n1 : Easy mode"); 
     printf("\n2 : Hard mode"); 
     printf("\n3 : Go Back");
@@ -27,9 +27,25 @@ void single_mode_output() { //컴퓨터랑 게임
 void multi_mode_output() { //멀티 플레이
     clear_console();;
     printf("\n---------- Tic Tac Toe Game ----------");
-    printf("\n--------- multi_mode ---------");
+    printf("\n------------- Multi Mode -------------");
     printf("\n1 : Normal Mode"); // X가 먼저 시작
     printf("\n2 : Speed Mode"); // O가 먼저 시작
+    printf("\n3 : Go Back");
+    printf("\nEnter your choice:>");
+}
+
+void single_mode_easy_output() {
+    clear_console();
+    printf("\n---------- Tic Tac Toe Game ----------");
+    printf("\n------------- Easy Mode --------------");
+}
+
+void single_mode_hard_output() {
+    clear_console();
+    printf("\n---------- Tic Tac Toe Game ----------");
+    printf("\n------------- Hard Mode --------------");
+    printf("\n1 : Play first"); // X가 먼저 시작
+    printf("\n2 : Computer play first"); // O가 먼저 시작
     printf("\n3 : Go Back");
     printf("\nEnter your choice:>");
 }
@@ -37,7 +53,7 @@ void multi_mode_output() { //멀티 플레이
 void multi_mode_original_output() {
     clear_console();;
     printf("\n---------- Tic Tac Toe Game ----------");
-    printf("\n--------- multi_mode ---------");
+    printf("\n------------- Multi Mode -------------");
     printf("\n1 : player 1 start first"); // player1로 먼저 시작
     printf("\n2 : player 2 start first"); // player2로 먼저 시작
     printf("\n3 : Go Back");
@@ -47,14 +63,15 @@ void multi_mode_original_output() {
 void multi_mode_speed_output_first() {
     clear_console();;
     printf("\n---------- Tic Tac Toe Game ----------");
-    printf("\n--------- Speed Mode ---------");
+    printf("\n------------- Speed Mode -------------");
     printf("\nEnter the time limit (in seconds, 0 to go back):");
     printf("\nEnter your choice:>");
 }
+
 void multi_mode_speed_output_second() {
     clear_console();;
     printf("\n---------- Tic Tac Toe Game ----------");
-    printf("\n--------- Speed Mode ---------");
+    printf("\n------------- Speed Mode -------------");
     printf("\nlimit time : %d", game_time_limit);
     printf("\n1 : player 1 start first"); // X가 먼저 시작
     printf("\n2 : player 2 start first"); // O가 먼저 시작
@@ -62,26 +79,10 @@ void multi_mode_speed_output_second() {
     printf("\nEnter your choice:>");
 }
 
-void single_mode_easy_output() {
-    clear_console();
-    printf("\n---------- Tic Tac Toe Game ----------");
-    printf("\n------------- Easy mode --------------");
-}
-
-void single_mode_hard_output() {
-    clear_console();
-    printf("\n---------- Tic Tac Toe Game ----------");
-    printf("\n------------- Hard mode --------------");
-    printf("\n1 : Play first"); // X가 먼저 시작
-    printf("\n2 : Computer play first"); // O가 먼저 시작
-    printf("\n3 : Go Back");
-    printf("\nEnter your choice:>");
-}
-
 void input_domain_error_output() {
     clear_console();
     printf("Please enter a number from 1 to 3!"); //범위 내에서 출력하라는 문장 출력
-    sleep_time(2); //2초 동안 지연 시간 설정
+    sleep_time(3); //2초 동안 지연 시간 설정
 }
 
 void place_marker(char marker, int row, int col) { // 마커를 지정된 위치에 놓는 함수입니다.
