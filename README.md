@@ -87,7 +87,8 @@ Once compiled, you can run the game with:
 - On Windows:
 
   ```bash
-  build/Debug/OSS_tic_tac_toe.exe
+  cd ..
+  ./OSS_tic_tac_toe
   ```
 
 #### Using gcc
