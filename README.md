@@ -79,6 +79,9 @@ cmake --build .
 Once compiled, you can run the game with:
 
 - On macOS and Linux:
+  ```bash
+  make
+  ```
 
   ```bash
   cd ..
