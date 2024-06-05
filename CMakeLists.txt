@@ -1,28 +1,29 @@
 cmake_minimum_required(VERSION 3.10)
 
-# Project name
-project(TicTacToe C)
+project(OSS_tic_tac_toe VERSION 1.0)
 
-# Specify the C standard
 set(CMAKE_C_STANDARD 99)
-set(CMAKE_C_STANDARD_REQUIRED True)
 
-# Include directories
 include_directories(headers)
 
-# Source files
-set(SOURCES
-    src/game_logic.c
-    src/game_rules.c
+set(SRC_FILES
     src/main.c
-    src/main_menu.c
-    src/move_cursor.c
+    src/game_logic.c
+    src/game_menu.c
+    src/game_rules.c
+    src/console_output.c
 )
 
-# Executable
-add_executable(TicTacToe ${SOURCES})
-
-# Platform-specific settings
-if (WIN32)
-    target_link_libraries(TicTacToe user32)
+if(WIN32)
+    list(APPEND SRC_FILES
+        src_for_win/env.c
+        src_for_win/move_cursor.c
+    )
+elseif(UNIX)
+    list(APPEND SRC_FILES
+        src_for_linux/env.c
+        src_for_linux/move_cursor.c
+    )
 endif()
+
+add_executable(${PROJECT_NAME} ${SRC_FILES})

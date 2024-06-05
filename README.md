@@ -7,10 +7,9 @@ Welcome to the TicTacToe game project!
 ## 📂 Project Structure
 
 ```markdown
-TicTacToe/
+OSS_tic_tac_toe/
 ├── .github/
-│   └── workflows/
-│       └── cr.yml
+│
 ├── headers/
 │   ├── game_logic.h
 │   ├── game_rules.h
@@ -33,12 +32,30 @@ TicTacToe/
 
 ## 🛠️ Installation
 
-Clone the repository and ensure you have `gcc` installed.
+Clone the repository and ensure you have 'gcc' and 'cmake' installed.
 
 ```bash
-git clone https://github.com/username/TicTacToe.git
-cd TicTacToe
+git clone https://github.com/username/OSS_tic_tac_toe.git
+cd OSS_tic_tac_toe
 ```
+### Installing Dependencies (Linux)
+For Linux systems, you can use the provided setup.sh script to install necessary dependencies.
+1. Make the script executable:
+```bash
+chmod +x setup.sh
+```
+2. Run the script
+```bash
+./setup.sh
+```
+This script will update the package list and install the necessary packages (libncurses5-dev and libncursesw5-dev).
+```bash
+sudo apt-get update
+sudo apt-get install -y libncurses5-dev libncursesw5-dev
+```
+
+### Installing Dependencies (Windows and macOS)
+Ensure you have the necessary development tools installed ('gcc', 'cmake'). You may need to install additional packages manually.
 
 ## 🚀 Usage
 
@@ -71,13 +88,13 @@ Once compiled, you can run the game with:
 - On macOS and Linux:
 
   ```bash
-  ./build/TicTacToe
+  ./build/Debug/OSS_tic_tac_toe.exe
   ```
 
 - On Windows:
 
   ```bash
-  TicTacToe.exe
+  build/Debug/OSS_tic_tac_toe.exe
   ```
 
 #### Using gcc
@@ -107,14 +124,15 @@ Once compiled, you can run the game with:
 - On macOS and Linux:
 
   ```bash
-  ./TicTacToe
+  ./OSS_tic_tac_toe.exe
   ```
 
 - On Windows:
 
   ```bash
-  TicTacToe.exe
+  OSS_tic_tac_toe.exe
   ```
+
 
 ## 👥 Team Members
 
