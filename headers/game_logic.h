@@ -4,21 +4,20 @@
 extern int board[3][3];
 extern int turn, flag;
 extern int mode;
-extern int player,player2,comp; //player2전역 변수 추가적으로 선언 시켜줌
-extern int limit;
+extern int player_1,player_2,computer; //player2전역 변수 추가적으로 선언 시켜줌
+extern int game_time_limit;
 
-void player_move();
-void player2_move();//player2_move 함수 선언
-void player1_move_speed();
-void player2_move_speed();
+void player_1_turn();
+void player_2_turn();//milti_player_2_turn 함수 선언
+void player_1_turn_speed();
+void player_2_turn_speed();
 
-void start_game();
-void start_easy();
-void check_draw();
-void draw_board();
-void place_marker(char ch, int row, int col);
+void computer_turn_hard();
+void computer_turn_easy();
+
+
 void next_turn(int position);
-void next_turn_multi(int position, int p);
+void next_turn_multi(int position, int player);
 int find_best_move();
 int find_next_best_move();
 
