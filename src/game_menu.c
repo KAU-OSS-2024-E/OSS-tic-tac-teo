@@ -13,7 +13,7 @@ int board[BOARD_SIZE][BOARD_SIZE] = {
     {EMPTY, EMPTY, EMPTY}
 }; // 게임 보드 초기화
 int turn = 1, flag = 0; // 게임 턴과 승리 플래그
-int mode; //game mode
+int game_mode; //game mode
 int player_1, player_2, computer; // 플레이어와 플레이어2 그리고  컴퓨터 구분
 int game_time_limit; //time
 
@@ -49,9 +49,11 @@ void single_mode() { //컴퓨터랑 게임
 
     switch (choice) {
         case 1:
+            game_mode = 1;
             single_mode_easy();//쉬운 모드
             break;
         case 2:
+            game_mode = 2;
             single_mode_hard();//어려운 모드
             break;
         case 3:
@@ -70,6 +72,7 @@ void multi_mode() {
 
     switch (choice) {
         case 1:
+            game_mode = 3;
             multi_mode_original();
             break;
         case 2:
@@ -79,65 +82,6 @@ void multi_mode() {
             game_menu();
             break;
         default:
-            input_domain_error_output();
-            multi_mode();
-    }
-}
-
-void multi_mode_original() {
-    int choice;
-    multi_mode_original_output();
-    scanf("%d", &choice);
-    turn = 1;
-
-    switch (choice) {
-        case 1:
-            player_2 = 0;
-            player_1 = 1;
-            player_1_turn();
-            break;
-        case 2:
-            player_2 = 1;
-            player_1 = 0;
-            player_2_turn();
-            break;
-        case 3:
-            game_menu(); //이전 화면으로 이동
-            break;
-        default:  // case 1,2,3에 해당되지 않는다면 재입력
-            input_domain_error_output();
-            multi_mode();
-    }
-}
-
-void multi_mode_speed() {
-    multi_mode_speed_output_first();
-    scanf("%d", &game_time_limit);
-
-    if (game_time_limit==0) {
-        game_menu();
-    }
-    
-    int choice;
-    multi_mode_speed_output_second();
-    scanf("%d", &choice);
-
-    turn = 1;
-    switch (choice) {
-        case 1:
-            player_2 = 0;
-            player_1 = 1;// player-1 승 flag값 사용
-            player_1_turn_speed();//single_player_turn함수 호출
-            break;
-        case 2:
-            player_2 = 1;//player2 승 flag값 사용
-            player_1 = 0;
-            player_2_turn_speed();//player_2_turn()함수 호출
-            break;
-        case 3:
-            game_menu(); //이전 화면으로 이동
-            break;
-        default:  // case 1,2,3에 해당되지 않는다면 재입력
             input_domain_error_output();
             multi_mode();
     }
@@ -171,7 +115,65 @@ void single_mode_hard() {
             break;
         default:// case 1,2,3에 해당되지 않는다면 재입력
             input_domain_error_output();
-            single_mode();
+            single_mode_hard();
 
     }
 }
+
+void multi_mode_original() {
+    int choice;
+    multi_mode_original_output();
+    scanf("%d", &choice);
+
+    switch (choice) {
+        case 1:
+            player_2 = 0;
+            player_1 = 1;
+            player_1_turn();
+            break;
+        case 2:
+            player_2 = 1;
+            player_1 = 0;
+            player_2_turn();
+            break;
+        case 3:
+            multi_mode(); //이전 화면으로 이동
+            break;
+        default:  // case 1,2,3에 해당되지 않는다면 재입력
+            input_domain_error_output();
+            multi_mode_original();
+    }
+}
+
+void multi_mode_speed() {
+    multi_mode_speed_output_first();
+    scanf("%d", &game_time_limit);
+
+    if (game_time_limit==0) {
+        game_menu();
+    }
+    
+    int choice;
+    multi_mode_speed_output_second();
+    scanf("%d", &choice);
+
+    switch (choice) {
+        case 1:
+            player_2 = 0;
+            player_1 = 1;// player-1 승 flag값 사용
+            player_1_turn_speed();//single_player_turn함수 호출
+            break;
+        case 2:
+            player_2 = 1;//player2 승 flag값 사용
+            player_1 = 0;
+            player_2_turn_speed();//player_2_turn()함수 호출
+            break;
+        case 3:
+            multi_mode(); //이전 화면으로 이동
+            break;
+        default:  // case 1,2,3에 해당되지 않는다면 재입력
+            input_domain_error_output();
+            multi_mode_speed();
+    }
+}
+

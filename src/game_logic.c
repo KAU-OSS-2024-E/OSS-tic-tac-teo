@@ -34,7 +34,7 @@ void player_1_turn() { // 플레이어의 움직임 처리 함수입니다.
     board_output();
     check_draw();
 
-    switch (mode){
+    switch (game_mode){
         case 1: 
             computer_turn_easy(); // 쉬운 모드 컴퓨터의 턴으로 전환합니다.
             break;
@@ -45,6 +45,55 @@ void player_1_turn() { // 플레이어의 움직임 처리 함수입니다.
             player_2_turn(); // player2의 턴으로 전환합니다.
             break;
     }
+}
+
+void computer_turn_easy() {
+    int com_random_position;
+    int rand_row, rand_col;
+    
+    do{
+        com_random_position = rand() % 9 + 1;
+        rand_row = (com_random_position - 1) / 3;
+        rand_col = (com_random_position - 1) % 3;
+    } while(board[rand_row][rand_col]!=EMPTY);
+
+    if (com_random_position == find_win_position(computer, board)) { 
+        next_turn(com_random_position);
+        board_output();
+        win_computer_output();
+        exit(0);
+    }
+    next_turn(com_random_position);
+    board_output();
+    
+    check_draw(); 
+    player_1_turn();
+}
+
+void computer_turn_hard() { // 게임 시작 시 컴퓨터의 움직임을 처리하는 함수입니다.
+    int com_win_position = find_win_position(computer, board); // 컴퓨터가 이길 수 있는 위치를 찾습니다.
+    int player_win_position = find_win_position(player_1, board); // 플레이어가 이길 수 있는 위치를 찾습니다.
+    int best_move = find_best_move(); // 최선의 수를 찾습니다.
+
+
+    if (com_win_position) {
+        next_turn(com_win_position); // 컴퓨터가 이길 수 있는 위치가 있으면 해당 위치에 마커를 놓고 턴을 넘깁니다.
+        flag = 1; // 컴퓨터가 승리함을 표시합니다.
+    } 
+    else if (player_win_position)
+        next_turn(player_win_position); // 플레이어가 이길 수 있는 위치가 있으면 해당 위치에 마커를 놓고 턴을 넘깁니다.
+    else if (best_move)
+        next_turn(best_move); // 최선의 수가 있으면 해당 위치에 마커를 놓고 턴을 넘깁니다.
+    else
+        next_turn(find_next_best_move()); // 다음으로 좋은 수를 찾아 마커를 놓고 턴을 넘깁니다.
+    
+    board_output();
+
+    if (flag) { // 컴퓨터가 승리한 경우를 처리합니다.
+        win_computer_output();
+    } 
+    else
+        player_1_turn();
 }
 
 void player_2_turn() { //플레이어2의 움직임 처리 함수입니다.
@@ -103,13 +152,13 @@ void player_1_turn_speed() {
     }
 
     if (pos == find_win_position(player_1, board)) { // 플레이어가 이길 수 있는 위치인지 확인
-        next_turn_multi(pos, player_1);
+        next_turn_multi(player_1, pos);
         board_output();
         win_player_1_output();
         exit(0);
     }
 
-    next_turn_multi(pos, player_1);
+    next_turn_multi(player_1, pos);
     board_output();
     check_draw();
     player_2_turn_speed();
@@ -144,67 +193,17 @@ void player_2_turn_speed() { //player2함수
     }
 
     if (pos == find_win_position(player_2, board)) { // 플레이어2가 이길 수 있는 위치인지 확인
-        next_turn_multi(pos, player_2);
+        next_turn_multi(player_2, pos);
         board_output();
         win_player_2_output();
         exit(0);
     }
 
-    next_turn_multi(pos, player_2);
+    next_turn_multi(player_2, pos);
     board_output();
     check_draw();
     player_1_turn_speed();
 }
-
-void computer_turn_hard() { // 게임 시작 시 컴퓨터의 움직임을 처리하는 함수입니다.
-    int com_win_position = find_win_position(computer, board); // 컴퓨터가 이길 수 있는 위치를 찾습니다.
-    int player_win_position = find_win_position(player_1, board); // 플레이어가 이길 수 있는 위치를 찾습니다.
-    int best_move = find_best_move(); // 최선의 수를 찾습니다.
-
-
-    if (com_win_position) {
-        next_turn(com_win_position); // 컴퓨터가 이길 수 있는 위치가 있으면 해당 위치에 마커를 놓고 턴을 넘깁니다.
-        flag = 1; // 컴퓨터가 승리함을 표시합니다.
-    } 
-    else if (player_win_position)
-        next_turn(player_win_position); // 플레이어가 이길 수 있는 위치가 있으면 해당 위치에 마커를 놓고 턴을 넘깁니다.
-    else if (best_move)
-        next_turn(best_move); // 최선의 수가 있으면 해당 위치에 마커를 놓고 턴을 넘깁니다.
-    else
-        next_turn(find_next_best_move()); // 다음으로 좋은 수를 찾아 마커를 놓고 턴을 넘깁니다.
-    
-    board_output();
-
-    if (flag) { // 컴퓨터가 승리한 경우를 처리합니다.
-        win_computer_output();
-    } 
-    else
-        player_1_turn();
-}
-
-void computer_turn_easy() {
-    int com_random_position;
-    int rand_row, rand_col;
-    
-    do{
-        com_random_position = rand() % 9 + 1;
-        rand_row = (com_random_position - 1) / 3;
-        rand_col = (com_random_position - 1) % 3;
-    } while(board[rand_row][rand_col]!=EMPTY);
-
-    if (com_random_position == find_win_position(computer, board)) { 
-        next_turn(com_random_position);
-        board_output();
-        win_computer_output();
-        exit(0);
-    }
-    next_turn(com_random_position);
-    board_output();
-    
-    check_draw(); 
-    player_1_turn();
-}
-
 
 void next_turn(int position) { // 다음 턴을 처리하는 함수입니다.
     int row, col;
@@ -220,14 +219,14 @@ void next_turn(int position) { // 다음 턴을 처리하는 함수입니다.
 }
 
 
-void next_turn_multi(int position, int p) {
+void next_turn_multi(int player, int position) {
     // p==1 then X   p==0  then  O
     int row, col;
 
     row = (position - 1) / 3;
     col = (position - 1) % 3;
 
-    if (p)
+    if (player)
         board[row][col] = MARK_X;
     else
         board[row][col] = MARK_O;
