@@ -81,7 +81,7 @@ void single_mode_hard_output() {
 void input_domain_error_output() {
     clear_console();
     printf("Please enter a number from 1 to 3!"); //범위 내에서 출력하라는 문장 출력
-    sleep_time(2000); //2초 동안 지연 시간 설정
+    sleep_time(2); //2초 동안 지연 시간 설정
 }
 
 void place_marker(char marker, int row, int col) { // 마커를 지정된 위치에 놓는 함수입니다.
@@ -120,13 +120,13 @@ void board_output() { // 게임 보드를 그리는 함수입니다.
 void time_over_output(){
     move_cursor(CURSOR_X, CURSOR_Y);
     printf("Time Over");
-    sleep_time(1000);
+    sleep_time(1);
 }
 
 void wrong_position_error_output() {
     move_cursor(CURSOR_X, CURSOR_Y);
     printf("wrong postion");
-    sleep_time(1000);
+    sleep_time(1);
 }
 
 void win_computer_output(){
