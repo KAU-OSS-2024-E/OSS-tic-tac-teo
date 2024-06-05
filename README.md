@@ -11,17 +11,20 @@ OSS_tic_tac_toe/
 ├── .github/
 │
 ├── headers/
-│   ├── game_logic.h
+│   ├── env.h
+│   ├── console_output.h
 │   ├── game_rules.h
-│   ├── main_menu.h
+│   ├── game_constants.h
+│   ├── game_logic.h
+│   ├── game_menu.h
 │   └── move_cursor.h
 ├── src/
+│   ├── console_output.c
 │   ├── game_logic.c
 │   ├── game_rules.c
 │   ├── main.c
-│   ├── main_menu.c
-│   ├── move_cursor.c
-│   └── win_game.c
+│   ├── game_menu.c
+│   └── console_output.c
 ├── .gitignore
 ├── CMakeLists.txt
 ├── DEVELOPE.md
